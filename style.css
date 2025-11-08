@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css? family=Raleway&display=swap');
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: url(https://img.freepik.com/free-photo/grunge-black-concrete-textured-background_53876-124541.jpg?semt=ais_hybrid&w=740&q=80);
+    padding: 100px 0;
+}
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px
+}
+
+.container {
+    width: 800px;
+    min-height: 800px;
+    border: 10px solid #B30000;
+    margin: 0 auto;
+    background: white;
+}
+
+.header{
+    display: flex;
+    height: 150px;
+}
+
+.title-block{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 97.5%;
+    border: 2px solid #1E1E1E;
+    font-size: 30px;
+    background: url(https://images.wallpapersden.com/image/download/programming-coding-language_bGhpbm6UmZqaraWkpJRmbmdlrWZlbWU.jpg) no-repeat center center / cover;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.title-block::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+}
+
+.title{
+    position: relative;
+    z-index: 1;
+}
+
+.userpic{
+    display: flex;
+    width: 20%;
+    height: 100%;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs9i-4Q2hAkQoDFIuCFSTC3u9g-e7wDSChFA&s) no-repeat center center / cover;
+}
+
+.nav ul{
+    display: flex;
+    background: rgb(214, 211, 211);
+    margin: 10px 0;
+}
+.nav li a{
+    display: flex;
+    padding: 20px;
+    text-decoration: none;
+    color: #404040;
+    font-weight: bold;
+    border-right: 1px solid #eae5e5
+}
+
+.nav li a:hover {
+    background: grey;
+    transition: background 0.3s ease;
+}
+
+.content-wrapper {
+    display: flex;
+}
+
+.content{
+    width: 70%;
+    padding: 20px;
+}
+
+.sidebar{
+    width: 30%;
+    padding: 20px;
+}
+
+.skills li {
+    padding: 10px 0;
+    transition: transform .5s ease;
+    cursor: pointer;
+}
+
+.skills li:hover {
+    transform: translateX(10px);
+}

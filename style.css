@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css? family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+* { box-sizing: border-box; }
+img, picture, video, iframe, svg { max-width: 100%; height: auto; display: block; }
+html { -webkit-text-size-adjust: 100%; }
 
 body {
     font-family: 'Raleway', sans-serif;
@@ -12,7 +16,8 @@ h3 {
 }
 
 .container {
-    width: 800px;
+    max-width: 800px;
+    width: calc(100% - 40px); 
     min-height: 800px;
     border: 10px solid #B30000;
     margin: 0 auto;
@@ -102,4 +107,23 @@ h3 {
 
 .skills li:hover {
     transform: translateX(10px);
+}
+
+@media (max-width: 700px) {
+    body { padding: 40px 0; } 
+    .container { width: calc(100% - 20px); border-width: 6px; }
+
+    .header { flex-direction: column; align-items: stretch; height: auto; }
+    .title-block { width: 100%; margin-right: 0; height: 200px; }
+    .userpic { width: 100%; height: 140px; background-position: center; }
+
+    .nav ul { flex-wrap: wrap; }
+    .nav li a { padding: 10px 12px; }
+
+    .content-wrapper { flex-direction: column; }
+    .content, .sidebar { width: 100%; padding: 12px; }
+    .sidebar { order: 2; }
+    .content { order: 1; }
+
+    .skills li { padding: 8px 0; }
 }

@@ -311,6 +311,31 @@ main {
     background: var(--subtle);
 }
 
+/* Label/value list */
+
+.skills-list div {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.skills-list div:first-child {
+    border-top: 1px solid var(--line);
+}
+
+.skills-list dt {
+    color: var(--subtle);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    line-height: 2;
+}
+
+.skills-list dd {
+    color: var(--muted);
+}
+
 /* Row list: label on the left, meta on the right */
 
 .rows-list a,
@@ -351,18 +376,18 @@ main {
     font-size: 0.86rem;
 }
 
-/* Projects page */
+/* Entry list: title and meta on one line, description below */
 
-.project-list li {
+.entry-list li {
     padding: 14px 0;
     border-bottom: 1px solid var(--line);
 }
 
-.project-list li:first-child {
+.entry-list li:first-child {
     border-top: 1px solid var(--line);
 }
 
-.project-header {
+.entry-header {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -370,14 +395,14 @@ main {
     gap: 4px 16px;
 }
 
-.project-header .row-meta {
+.entry-header .row-meta {
     color: var(--subtle);
     font-family: var(--sans);
     font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
 }
 
-.project-description {
+.entry-description {
     margin-top: 2px;
     color: var(--muted);
     font-size: 0.94rem;
@@ -506,6 +531,11 @@ main {
 
     .columns-list {
         grid-template-columns: 1fr;
+    }
+
+    .skills-list div {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 }
 

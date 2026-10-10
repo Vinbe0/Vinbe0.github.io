@@ -5,14 +5,14 @@ const translations = {
         navHome: "Home",
         navProjects: "Projects",
         languageLabel: "Language",
-        subtitle: "Computer Science student · Full stack developer",
-        bioP1: "I'm a second-year Computer Science student at Satbayev University and a full stack developer. I'm learning by building real projects in web development and software engineering.",
-        bioP2: "I started programming with Python at 15, after getting my first PC. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.",
+        subtitle: "Full-stack developer · CTO at qwrt.ca",
+        bioP1: "I'm a full-stack developer and Computer Science student at City University of Hong Kong, in the Artificial Intelligence stream. I'm the CTO of qwrt.ca, a platform for game developers from Central Asia, and part of the core team at EmoSDK, a player-insight analytics SDK for game studios.",
+        bioP2: "Most of my work is in game development tooling, built with TypeScript, React, Vue and Django.",
         bioLabel: "Bio",
         bioShort: "Short",
         bioLong: "Long",
-        bioLongP1: "Hello! I'm a full stack developer with 0 years of professional experience, but a strong passion for learning and creating. I started programming with Python at the age of 15, after getting my first PC. I explored the basics, then took a 2-year break, but my curiosity never faded. In 2024, I enrolled at Satbayev University to study Cyber Security, but quickly realized my true interest lies in Computer Science, so I switched my major in 2025.",
-        bioLongP2: "Now, as a second-year CS student, I’m eager to expand my knowledge, build practical projects, and improve my skills in web development and software engineering. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.",
+        bioLongP1: "I started programming with Python at 15, after getting my first PC. I explored the basics and took a two-year break, but my curiosity never faded. In 2024 I enrolled at Satbayev University in Almaty to study Cyber Security, then switched to Computer Science in 2025 once I realized that's where my real interest lies.",
+        bioLongP2: "Since then I've worked as a frontend developer at Center Pro and AKIRA, joined EmoSDK as a full-stack developer, and became CTO of qwrt.ca. Today I study Computer Science in the Artificial Intelligence stream at City University of Hong Kong, and I'm applying to the HK Tech 300 Seed Fund with EmoSDK.",
         projectsTitle: "Projects",
         projectsMore: "All projects →",
         skillsTitle: "Skills",
@@ -34,6 +34,29 @@ const translations = {
         formSuccess: "Thank you for your feedback!",
         formError: "Something went wrong. Please try again later.",
         backHome: "Back home",
+        experienceTitle: "Experience",
+        present: "Present",
+        roleCto: "CTO",
+        roleFullStack: "Full-Stack Developer",
+        roleFrontend: "Frontend Developer",
+        expQwrt: "Building a publishing platform for indie games from Central Asia with Django REST, React, PostgreSQL, Docker and MinIO: game catalogs, studio profiles, events, game jams and downloadable builds, with JWT auth and role-based permissions. Partnering with AstanaHub on an upcoming game jam whose games will be published on the platform.",
+        expEmo: "Core team member of an MVP-stage player-insight analytics SDK for game studios. Built a narrative whiteboard in Vue 3 and TypeScript, a frame-by-frame timeline editor that visualizes emotions and behavior, and a Telegram bot for error alerts.",
+        expCenterPro: "Helped build an AI career-guidance platform from scratch with React and Next.js, and integrated a payment system to monetize it.",
+        expAkira: "Added game publishing, a gallery, video content and an events page to the Almaty Game Developers Club platform, built an admin panel, and ran a full audit and bug-fixing pass.",
+        entrepreneurshipTitle: "Entrepreneurship",
+        entHkTech: "Person-in-Charge (PIC) applicant for EmoSDK at the HK Tech 300 Seed Fund.",
+        educationTitle: "Education",
+        eduCityu: "BSc Computer Science, Artificial Intelligence stream",
+        eduCityuPlace: "Hong Kong",
+        eduSatbayevName: "Satbayev University",
+        eduSatbayev: "Bachelor's Degree in Computer Science",
+        eduSatbayevPlace: "Almaty, Kazakhstan",
+        skillsLanguages: "Languages",
+        skillsFrameworks: "Frameworks",
+        skillsBackend: "Backend & DevOps",
+        skillsSpoken: "Spoken",
+        skillsSpokenValue: "English, Russian, Persian",
+        skillsTesting: "automated testing",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -42,14 +65,14 @@ const translations = {
         navHome: "Басты бет",
         navProjects: "Жобалар",
         languageLabel: "Тіл",
-        subtitle: "Компьютерлік ғылымдар студенті · Full stack әзірлеуші",
-        bioP1: "Мен Сәтбаев университетінің Компьютерлік ғылымдар мамандығының екінші курс студентімін және full stack әзірлеушімін. Веб әзірлеу мен бағдарламалық инженерияны нақты жобалар жасау арқылы үйреніп жүрмін.",
-        bioP2: "15 жасымда бірінші компьютерімді алғаннан кейін Python тілінде бағдарламалауды бастадым. Жаңа технологияларды сынап көру, мәселелерді шешу және идеяларды жүзеге асыру үшін басқалармен бірге жұмыс істеу маған ұнайды.",
+        subtitle: "Full-stack әзірлеуші · qwrt.ca CTO",
+        bioP1: "Мен full-stack әзірлеушімін және City University of Hong Kong-та Artificial Intelligence бағыты бойынша Компьютерлік ғылымдар студентімін. Орталық Азиядағы ойын әзірлеушілеріне арналған qwrt.ca платформасының CTO-сымын және ойын студияларына арналған EmoSDK аналитикалық SDK-сының негізгі командасындамын.",
+        bioP2: "Негізінен TypeScript, React, Vue және Django арқылы геймдевке арналған құралдар жасаймын.",
         bioLabel: "Өмірбаян",
         bioShort: "Қысқа",
         bioLong: "Толық",
-        bioLongP1: "Сәлем! Мен full stack әзірлеушімін, кәсіби тәжірибем жоқ, бірақ үйренуге және жаңа нәрселер жасауға қатты қызығамын. 15 жасымда бірінші компьютерімді сатып алғаннан кейін Python тілін үйрене бастадым. Негіздерін меңгеріп, 2 жыл үзіліс жасадым, бірақ қызығушылығым ешқашан төмендеген жоқ. 2024 жылы мен Сәтбаев университетіне Киберқауіпсіздік мамандығына түстім, бірақ шын мәніндегі қызығушылығым Компьютерлік ғылымдар екенін түсініп, 2025 жылы мамандықты өзгерттім.",
-        bioLongP2: "Екінші курс студенті ретінде мен білімімді кеңейтуге, практикалық жобалар жасауға және веб-даму мен бағдарламалау дағдыларымды жетілдіруге ынталымын. Жаңа технологияларды сынап көру, проблемаларды шешу және идеяларды жүзеге асыру үшін басқалармен ынтымақтастықта болу маған ұнайды.",
+        bioLongP1: "15 жасымда бірінші компьютерімді алғаннан кейін Python тілінде бағдарламалауды бастадым. Негіздерін меңгеріп, 2 жыл үзіліс жасадым, бірақ қызығушылығым ешқашан сөнген жоқ. 2024 жылы Алматыдағы Сәтбаев университетіне Киберқауіпсіздік мамандығына түстім, бірақ шын қызығушылығым Компьютерлік ғылымдар екенін түсініп, 2025 жылы мамандығымды ауыстырдым.",
+        bioLongP2: "Содан бері Center Pro мен AKIRA-да frontend әзірлеуші болып жұмыс істедім, EmoSDK-ға full-stack әзірлеуші ретінде қосылдым және qwrt.ca-ның CTO-сы болдым. Қазір City University of Hong Kong-та Artificial Intelligence бағыты бойынша Компьютерлік ғылымдарды оқимын және EmoSDK атынан HK Tech 300 Seed Fund-қа өтінім беріп жатырмын.",
         projectsTitle: "Жобалар",
         projectsMore: "Барлық жобалар →",
         skillsTitle: "Дағдылар",
@@ -71,6 +94,29 @@ const translations = {
         formSuccess: "Пікіріңізге рахмет!",
         formError: "Қате орын алды. Кейінірек қайталап көріңіз.",
         backHome: "Басты бетке",
+        experienceTitle: "Тәжірибе",
+        present: "қазір",
+        roleCto: "CTO",
+        roleFullStack: "Full-stack әзірлеуші",
+        roleFrontend: "Frontend әзірлеуші",
+        expQwrt: "Орталық Азиядағы инди-ойындарды жариялауға арналған платформаны Django REST, React, PostgreSQL, Docker және MinIO арқылы жасап жатырмын: ойын каталогтары, студия профильдері, іс-шаралар, геймджемдер және жүктеп алынатын билдтер, JWT аутентификациясы және рөлдік рұқсаттар. AstanaHub-пен бірге геймджем дайындап жатырмыз, оның ойындары платформада жарияланады.",
+        expEmo: "Ойын студияларына арналған, MVP кезеңіндегі ойыншыларды талдау SDK-сының негізгі командасының мүшесімін. Vue 3 және TypeScript-те нарративтік интерактивті тақта, эмоциялар мен мінез-құлықты кадр бойынша көрсететін таймлайн редакторын және қателер туралы хабарлайтын Telegram-ботты жасадым.",
+        expCenterPro: "React және Next.js негізінде мансапқа бағдар беретін AI-платформаны нөлден бастап жасауға қатыстым және монетизация үшін төлем жүйесін біріктірдім.",
+        expAkira: "Алматы ойын әзірлеушілері клубының платформасына ойын жариялау, галерея, бейне және іс-шаралар бетін қостым, әкімші панелін жасадым және толық аудит жүргізіп, қателерді түзеттім.",
+        entrepreneurshipTitle: "Кәсіпкерлік",
+        entHkTech: "HK Tech 300 Seed Fund бағдарламасына EmoSDK атынан Person-in-Charge (PIC) өтінім беруші.",
+        educationTitle: "Білім",
+        eduCityu: "Компьютерлік ғылымдар бакалавриаты, Artificial Intelligence бағыты",
+        eduCityuPlace: "Гонконг",
+        eduSatbayevName: "Сәтбаев университеті",
+        eduSatbayev: "Компьютерлік ғылымдар бакалавриаты",
+        eduSatbayevPlace: "Алматы, Қазақстан",
+        skillsLanguages: "Бағдарламалау тілдері",
+        skillsFrameworks: "Фреймворктер",
+        skillsBackend: "Backend және DevOps",
+        skillsSpoken: "Тілдер",
+        skillsSpokenValue: "Ағылшын, орыс, парсы",
+        skillsTesting: "автотестілеу",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -79,14 +125,14 @@ const translations = {
         navHome: "Главная",
         navProjects: "Проекты",
         languageLabel: "Язык",
-        subtitle: "Студент Computer Science · Full stack разработчик",
-        bioP1: "Я студент второго курса Computer Science в Университете Сатпаева и full stack разработчик. Изучаю веб-разработку и software engineering на реальных проектах.",
-        bioP2: "Я начал программировать на Python в 15 лет, когда купил свой первый ПК. Мне нравится экспериментировать с новыми технологиями, решать задачи и вместе с другими воплощать идеи в жизнь.",
+        subtitle: "Full-stack разработчик · CTO qwrt.ca",
+        bioP1: "Я full-stack разработчик и студент Computer Science в City University of Hong Kong по направлению Artificial Intelligence. Я CTO qwrt.ca — платформы для разработчиков игр из Центральной Азии — и участник основной команды EmoSDK, аналитического SDK для игровых студий.",
+        bioP2: "В основном создаю инструменты для геймдева на TypeScript, React, Vue и Django.",
         bioLabel: "О себе",
         bioShort: "Кратко",
         bioLong: "Подробно",
-        bioLongP1: "Привет! Я full stack разработчик с нулевым профессиональным опытом, но с сильным желанием учиться и создавать. Я начал программировать на Python в 15 лет, когда купил свой первый ПК. Изучил основы, сделал паузу на 2 года, но интерес к программированию никогда не исчезал. В 2024 году я поступил в Университет Сатпаева на направление «Кибербезопасность», но быстро понял, что мой настоящий интерес — Computer Science, поэтому в 2025 году я сменил специальность.",
-        bioLongP2: "Сейчас, будучи студентом второго курса, я стремлюсь расширять свои знания, создавать практические проекты и совершенствовать навыки в веб-разработке и программировании. Мне нравится экспериментировать с новыми технологиями, решать задачи и сотрудничать с другими, чтобы воплощать идеи в жизнь.",
+        bioLongP1: "Я начал программировать на Python в 15 лет, когда купил свой первый ПК. Изучил основы, сделал паузу на 2 года, но интерес никогда не исчезал. В 2024 году я поступил в Университет Сатпаева в Алматы на «Кибербезопасность», но быстро понял, что мой настоящий интерес — Computer Science, и в 2025 году сменил специальность.",
+        bioLongP2: "С тех пор я работал frontend-разработчиком в Center Pro и AKIRA, присоединился к EmoSDK как full-stack разработчик и стал CTO qwrt.ca. Сейчас я изучаю Computer Science по направлению Artificial Intelligence в City University of Hong Kong и вместе с EmoSDK подаю заявку в HK Tech 300 Seed Fund.",
         projectsTitle: "Проекты",
         projectsMore: "Все проекты →",
         skillsTitle: "Навыки",
@@ -108,6 +154,29 @@ const translations = {
         formSuccess: "Спасибо за отзыв!",
         formError: "Что-то пошло не так. Попробуйте позже.",
         backHome: "На главную",
+        experienceTitle: "Опыт",
+        present: "н. в.",
+        roleCto: "CTO",
+        roleFullStack: "Full-stack разработчик",
+        roleFrontend: "Frontend-разработчик",
+        expQwrt: "Создаю платформу для публикации инди-игр из Центральной Азии на Django REST, React, PostgreSQL, Docker и MinIO: каталоги игр, профили студий, события, геймджемы и загрузка билдов, JWT-аутентификация и ролевые права. Вместе с AstanaHub готовим геймджем, игры с которого будут опубликованы на платформе.",
+        expEmo: "Участник основной команды аналитического SDK для игровых студий на стадии MVP. Сделал интерактивную доску для нарративов на Vue 3 и TypeScript, редактор таймлайна для покадрового анализа эмоций и поведения игроков и Telegram-бота для оповещений об ошибках.",
+        expCenterPro: "Участвовал в создании AI-платформы для профориентации с нуля на React и Next.js и интегрировал платёжную систему для монетизации.",
+        expAkira: "Добавил на платформу Клуба геймдевелоперов Алматы публикацию игр, галерею, видео и страницу событий, разработал админ-панель и провёл полный аудит с исправлением багов.",
+        entrepreneurshipTitle: "Предпринимательство",
+        entHkTech: "Заявитель на роль Person-in-Charge (PIC) от EmoSDK в HK Tech 300 Seed Fund.",
+        educationTitle: "Образование",
+        eduCityu: "Бакалавриат Computer Science, направление Artificial Intelligence",
+        eduCityuPlace: "Гонконг",
+        eduSatbayevName: "Университет Сатпаева",
+        eduSatbayev: "Бакалавриат, Computer Science",
+        eduSatbayevPlace: "Алматы, Казахстан",
+        skillsLanguages: "Языки программирования",
+        skillsFrameworks: "Фреймворки",
+        skillsBackend: "Backend и DevOps",
+        skillsSpoken: "Языки",
+        skillsSpokenValue: "Английский, русский, персидский",
+        skillsTesting: "автотесты",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -137,6 +206,7 @@ function updateLanguage(lang) {
 
     document.documentElement.lang = localeCodes[lang] || "en";
     document.title = t(document.body.dataset.pageTitle || "pageTitle");
+    renderDateRanges();
     renderProjects();
     document.dispatchEvent(new CustomEvent("sitelanguagechange"));
 }
@@ -158,6 +228,15 @@ function formatDate(value, { day = false } = {}) {
         month: "short",
         year: "numeric"
     }).format(date);
+}
+
+function renderDateRanges() {
+    document.querySelectorAll(".date-range").forEach((node) => {
+        const { dateStart, dateEnd } = node.dataset;
+        const start = formatDate(`${dateStart}T12:00:00`);
+        const end = dateEnd ? formatDate(`${dateEnd}T12:00:00`) : t("present");
+        node.textContent = start === end ? start : `${start} – ${end}`;
+    });
 }
 
 function renderProjects() {

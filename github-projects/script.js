@@ -19,7 +19,7 @@ function renderRepo(repo) {
     const title = document.createElement("a");
     const meta = document.createElement("span");
 
-    header.className = "project-header";
+    header.className = "entry-header";
     title.href = repo.html_url;
     title.target = "_blank";
     title.rel = "noreferrer";
@@ -37,7 +37,7 @@ function renderRepo(repo) {
 
     if (repo.description) {
         const description = document.createElement("p");
-        description.className = "project-description";
+        description.className = "entry-description";
         description.textContent = repo.description;
         item.appendChild(description);
     }

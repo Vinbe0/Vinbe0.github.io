@@ -48,6 +48,11 @@
 
 html {
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+.section {
+    scroll-margin-top: 24px;
 }
 
 body {
@@ -185,18 +190,35 @@ a:hover {
 
 .site-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 16px;
     padding: 40px 0 0;
     font-family: var(--sans);
     font-size: 0.82rem;
 }
 
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+}
+
+.site-nav a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.site-nav a:hover {
+    color: var(--text);
+}
+
 .header-controls {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-left: auto;
 }
 
 .theme-toggle {
@@ -436,10 +458,29 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* Phones: controls on top, section links spread across their own row */
+@media (max-width: 560px) {
+    .site-header {
+        row-gap: 14px;
+    }
+
+    .site-nav {
+        order: 2;
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
     }
 }
 

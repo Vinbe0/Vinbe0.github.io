@@ -38,6 +38,11 @@ const translations = {
         skillsTesting: "automated testing",
         journeyAlt: "A colorful hand-painted illustration blending the Hong Kong skyline and Victoria Harbour into Almaty, with the snowy Tien Shan mountains, yurts and apple orchards, representing my journey",
         siteName: "Nassimi Achmatylla",
+        navLabel: "Sections",
+        navExperience: "Experience",
+        navEducation: "Education",
+        navSkills: "Skills",
+        navContact: "Contact",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -79,6 +84,11 @@ const translations = {
         skillsTesting: "автотестілеу",
         journeyAlt: "Гонконг зәулім үйлері мен Виктория шығанағы қарлы Тянь-Шань таулары, киіз үйлер мен алма бақтары бар Алматыға ұласатын түрлі-түсті сурет — менің жолым",
         siteName: "Насими Ашматулла",
+        navLabel: "Бөлімдер",
+        navExperience: "Тәжірибе",
+        navEducation: "Білім",
+        navSkills: "Дағдылар",
+        navContact: "Байланыс",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -120,6 +130,11 @@ const translations = {
         skillsTesting: "автотесты",
         journeyAlt: "Яркая рисованная иллюстрация, где небоскрёбы Гонконга и бухта Виктория переходят в Алматы со снежными горами Тянь-Шаня, юртами и яблоневыми садами, — мой путь",
         siteName: "Насими Ашматулла",
+        navLabel: "Разделы",
+        navExperience: "Опыт",
+        navEducation: "Образование",
+        navSkills: "Навыки",
+        navContact: "Контакты",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -145,6 +160,10 @@ function updateLanguage(lang) {
 
     document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
         node.alt = t(node.dataset.i18nAlt);
+    });
+
+    document.querySelectorAll("[data-i18n-label]").forEach((node) => {
+        node.setAttribute("aria-label", t(node.dataset.i18nLabel));
     });
 
     document.documentElement.lang = localeCodes[lang] || "en";

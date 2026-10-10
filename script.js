@@ -1,6 +1,6 @@
 const translations = {
     English: {
-        pageTitle: "Ashmat Nassimi",
+        pageTitle: "Nassimi Achmatylla",
         skipLink: "Skip to content",
         navHome: "Home",
         navProjects: "Projects",
@@ -17,7 +17,7 @@ const translations = {
         projectsMore: "All projects →",
         skillsTitle: "Skills",
         linksTitle: "Elsewhere",
-        projectsPageTitle: "Projects | Ashmat Nassimi",
+        projectsPageTitle: "Projects | Nassimi Achmatylla",
         projectsSubtitle: "Public repositories from",
         projectsLoading: "Loading repositories…",
         projectsEmpty: "No public repositories yet.",
@@ -61,7 +61,7 @@ const translations = {
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
-        pageTitle: "Ашмат Насими",
+        pageTitle: "Nassimi Achmatylla",
         skipLink: "Мазмұнға өту",
         navHome: "Басты бет",
         navProjects: "Жобалар",
@@ -78,7 +78,7 @@ const translations = {
         projectsMore: "Барлық жобалар →",
         skillsTitle: "Дағдылар",
         linksTitle: "Байланыс",
-        projectsPageTitle: "Жобалар | Ашмат Насими",
+        projectsPageTitle: "Жобалар | Nassimi Achmatylla",
         projectsSubtitle: "Ашық репозиторийлер:",
         projectsLoading: "Репозиторийлер жүктелуде…",
         projectsEmpty: "Әзірге ашық репозиторийлер жоқ.",
@@ -122,7 +122,7 @@ const translations = {
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
-        pageTitle: "Ашмат Насими",
+        pageTitle: "Nassimi Achmatylla",
         skipLink: "Перейти к содержимому",
         navHome: "Главная",
         navProjects: "Проекты",
@@ -139,7 +139,7 @@ const translations = {
         projectsMore: "Все проекты →",
         skillsTitle: "Навыки",
         linksTitle: "Ссылки",
-        projectsPageTitle: "Проекты | Ашмат Насими",
+        projectsPageTitle: "Проекты | Nassimi Achmatylla",
         projectsSubtitle: "Публичные репозитории с",
         projectsLoading: "Загрузка репозиториев…",
         projectsEmpty: "Публичных репозиториев пока нет.",

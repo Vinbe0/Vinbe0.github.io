@@ -1,6 +1,7 @@
 const translations = {
     English: {
         pageTitle: "Ashmat Nassimi",
+        skipLink: "Skip to content",
         navHome: "Home",
         navProjects: "Projects",
         languageLabel: "Language",
@@ -37,6 +38,7 @@ const translations = {
     },
     Kazakh: {
         pageTitle: "Ашмат Насими",
+        skipLink: "Мазмұнға өту",
         navHome: "Басты бет",
         navProjects: "Жобалар",
         languageLabel: "Тіл",
@@ -73,6 +75,7 @@ const translations = {
     },
     Russian: {
         pageTitle: "Ашмат Насими",
+        skipLink: "Перейти к содержимому",
         navHome: "Главная",
         navProjects: "Проекты",
         languageLabel: "Язык",

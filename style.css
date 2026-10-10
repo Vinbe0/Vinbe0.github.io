@@ -95,6 +95,31 @@ a:hover {
     text-decoration-color: currentColor;
 }
 
+:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: var(--bg);
+    background: var(--text);
+    font-family: var(--sans);
+    font-size: 0.86rem;
+    text-decoration: none;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
 .container {
     width: min(var(--max-width), calc(100% - 32px));
     margin: 0 auto;
@@ -456,6 +481,14 @@ main {
 
 .site-footer a {
     color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
 }
 
 @media (max-width: 480px) {

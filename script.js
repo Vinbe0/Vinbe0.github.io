@@ -45,6 +45,12 @@ const translations = {
         expAkira: "Added game publishing, a gallery, video content and an events page to the Almaty Game Developers Club platform, built an admin panel, and ran a full audit and bug-fixing pass.",
         entrepreneurshipTitle: "Entrepreneurship",
         entHkTech: "Person-in-Charge (PIC) applicant for EmoSDK at the HK Tech 300 Seed Fund.",
+        educationTitle: "Education",
+        eduCityu: "BSc Computer Science, Artificial Intelligence stream",
+        eduCityuPlace: "Hong Kong",
+        eduSatbayevName: "Satbayev University",
+        eduSatbayev: "Bachelor's Degree in Computer Science",
+        eduSatbayevPlace: "Almaty, Kazakhstan",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -93,6 +99,12 @@ const translations = {
         expAkira: "Алматы ойын әзірлеушілері клубының платформасына ойын жариялау, галерея, бейне және іс-шаралар бетін қостым, әкімші панелін жасадым және толық аудит жүргізіп, қателерді түзеттім.",
         entrepreneurshipTitle: "Кәсіпкерлік",
         entHkTech: "HK Tech 300 Seed Fund бағдарламасына EmoSDK атынан Person-in-Charge (PIC) өтінім беруші.",
+        educationTitle: "Білім",
+        eduCityu: "Компьютерлік ғылымдар бакалавриаты, Artificial Intelligence бағыты",
+        eduCityuPlace: "Гонконг",
+        eduSatbayevName: "Сәтбаев университеті",
+        eduSatbayev: "Компьютерлік ғылымдар бакалавриаты",
+        eduSatbayevPlace: "Алматы, Қазақстан",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -141,6 +153,12 @@ const translations = {
         expAkira: "Добавил на платформу Клуба геймдевелоперов Алматы публикацию игр, галерею, видео и страницу событий, разработал админ-панель и провёл полный аудит с исправлением багов.",
         entrepreneurshipTitle: "Предпринимательство",
         entHkTech: "Заявитель на роль Person-in-Charge (PIC) от EmoSDK в HK Tech 300 Seed Fund.",
+        educationTitle: "Образование",
+        eduCityu: "Бакалавриат Computer Science, направление Artificial Intelligence",
+        eduCityuPlace: "Гонконг",
+        eduSatbayevName: "Университет Сатпаева",
+        eduSatbayev: "Бакалавриат, Computer Science",
+        eduSatbayevPlace: "Алматы, Казахстан",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };

@@ -63,8 +63,30 @@ function updateLanguage(lang) {
     document.title = dictionary.pageTitle;
 }
 
+function initialLanguage() {
+    try {
+        const saved = localStorage.getItem("language");
+        if (translations[saved]) {
+            return saved;
+        }
+    } catch (error) {}
+
+    const browserLanguages = navigator.languages || [navigator.language || ""];
+    for (const code of browserLanguages) {
+        const base = code.toLowerCase().split("-")[0];
+        if (base === "kk") return "Kazakh";
+        if (base === "ru") return "Russian";
+        if (base === "en") return "English";
+    }
+
+    return "Russian";
+}
+
 languageSelect.addEventListener("change", (event) => {
     updateLanguage(event.target.value);
+    try {
+        localStorage.setItem("language", event.target.value);
+    } catch (error) {}
 });
 
 const themeToggle = document.getElementById("theme-toggle");
@@ -94,4 +116,5 @@ syncThemeToggle();
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
+languageSelect.value = initialLanguage();
 updateLanguage(languageSelect.value);

@@ -42,6 +42,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 html {
     -webkit-text-size-adjust: 100%;
 }
@@ -185,6 +189,48 @@ main {
     color: var(--muted);
     font-family: var(--sans);
     font-size: 0.86rem;
+}
+
+.bio-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+}
+
+.bio-toggle h2 {
+    color: var(--subtle);
+    font-size: inherit;
+    font-weight: 400;
+}
+
+.bio-toggle-options {
+    display: flex;
+    gap: 4px;
+}
+
+.bio-toggle-options button {
+    padding: 2px 8px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--subtle);
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.bio-toggle-options button:hover {
+    color: var(--text);
+}
+
+.bio-toggle-options button[aria-pressed="true"] {
+    color: var(--text);
+    background: var(--surface);
 }
 
 .prose {

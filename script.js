@@ -7,6 +7,11 @@ const translations = {
         subtitle: "Computer Science student · Full stack developer",
         bioP1: "I'm a second-year Computer Science student at Satbayev University and a full stack developer. I'm learning by building real projects in web development and software engineering.",
         bioP2: "I started programming with Python at 15, after getting my first PC. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.",
+        bioLabel: "Bio",
+        bioShort: "Short",
+        bioLong: "Long",
+        bioLongP1: "Hello! I'm a full stack developer with 0 years of professional experience, but a strong passion for learning and creating. I started programming with Python at the age of 15, after getting my first PC. I explored the basics, then took a 2-year break, but my curiosity never faded. In 2024, I enrolled at Satbayev University to study Cyber Security, but quickly realized my true interest lies in Computer Science, so I switched my major in 2025.",
+        bioLongP2: "Now, as a second-year CS student, I’m eager to expand my knowledge, build practical projects, and improve my skills in web development and software engineering. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.",
         projectsTitle: "Projects",
         projectsText: "Experiments, practice work, and ideas as they grow into better software.",
         projectsMore: "All projects →",
@@ -22,6 +27,11 @@ const translations = {
         subtitle: "Компьютерлік ғылымдар студенті · Full stack әзірлеуші",
         bioP1: "Мен Сәтбаев университетінің Компьютерлік ғылымдар мамандығының екінші курс студентімін және full stack әзірлеушімін. Веб әзірлеу мен бағдарламалық инженерияны нақты жобалар жасау арқылы үйреніп жүрмін.",
         bioP2: "15 жасымда бірінші компьютерімді алғаннан кейін Python тілінде бағдарламалауды бастадым. Жаңа технологияларды сынап көру, мәселелерді шешу және идеяларды жүзеге асыру үшін басқалармен бірге жұмыс істеу маған ұнайды.",
+        bioLabel: "Өмірбаян",
+        bioShort: "Қысқа",
+        bioLong: "Толық",
+        bioLongP1: "Сәлем! Мен full stack әзірлеушімін, кәсіби тәжірибем жоқ, бірақ үйренуге және жаңа нәрселер жасауға қатты қызығамын. 15 жасымда бірінші компьютерімді сатып алғаннан кейін Python тілін үйрене бастадым. Негіздерін меңгеріп, 2 жыл үзіліс жасадым, бірақ қызығушылығым ешқашан төмендеген жоқ. 2024 жылы мен Сәтбаев университетіне Киберқауіпсіздік мамандығына түстім, бірақ шын мәніндегі қызығушылығым Компьютерлік ғылымдар екенін түсініп, 2025 жылы мамандықты өзгерттім.",
+        bioLongP2: "Екінші курс студенті ретінде мен білімімді кеңейтуге, практикалық жобалар жасауға және веб-даму мен бағдарламалау дағдыларымды жетілдіруге ынталымын. Жаңа технологияларды сынап көру, проблемаларды шешу және идеяларды жүзеге асыру үшін басқалармен ынтымақтастықта болу маған ұнайды.",
         projectsTitle: "Жобалар",
         projectsText: "Тәжірибелер, практикалық жұмыстар және жақсы бағдарламаларға айналып жатқан идеялар.",
         projectsMore: "Барлық жобалар →",
@@ -37,6 +47,11 @@ const translations = {
         subtitle: "Студент Computer Science · Full stack разработчик",
         bioP1: "Я студент второго курса Computer Science в Университете Сатпаева и full stack разработчик. Изучаю веб-разработку и software engineering на реальных проектах.",
         bioP2: "Я начал программировать на Python в 15 лет, когда купил свой первый ПК. Мне нравится экспериментировать с новыми технологиями, решать задачи и вместе с другими воплощать идеи в жизнь.",
+        bioLabel: "О себе",
+        bioShort: "Кратко",
+        bioLong: "Подробно",
+        bioLongP1: "Привет! Я full stack разработчик с нулевым профессиональным опытом, но с сильным желанием учиться и создавать. Я начал программировать на Python в 15 лет, когда купил свой первый ПК. Изучил основы, сделал паузу на 2 года, но интерес к программированию никогда не исчезал. В 2024 году я поступил в Университет Сатпаева на направление «Кибербезопасность», но быстро понял, что мой настоящий интерес — Computer Science, поэтому в 2025 году я сменил специальность.",
+        bioLongP2: "Сейчас, будучи студентом второго курса, я стремлюсь расширять свои знания, создавать практические проекты и совершенствовать навыки в веб-разработке и программировании. Мне нравится экспериментировать с новыми технологиями, решать задачи и сотрудничать с другими, чтобы воплощать идеи в жизнь.",
         projectsTitle: "Проекты",
         projectsText: "Эксперименты, практические работы и идеи, которые постепенно становятся лучше.",
         projectsMore: "Все проекты →",
@@ -87,6 +102,22 @@ languageSelect.addEventListener("change", (event) => {
     try {
         localStorage.setItem("language", event.target.value);
     } catch (error) {}
+});
+
+const bioButtons = document.querySelectorAll("[data-bio]");
+const bioPanels = document.querySelectorAll("[data-bio-panel]");
+
+function showBio(length) {
+    bioButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.bio === length));
+    });
+    bioPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.bioPanel !== length;
+    });
+}
+
+bioButtons.forEach((button) => {
+    button.addEventListener("click", () => showBio(button.dataset.bio));
 });
 
 const themeToggle = document.getElementById("theme-toggle");

@@ -49,9 +49,22 @@
             <h1 class="site-title">Ashmat Nassimi</h1>
             <p class="site-subtitle" data-i18n="subtitle">Computer Science student · Full stack developer</p>
 
-            <section class="prose" aria-label="About">
-                <p data-i18n="bioP1">I'm a second-year Computer Science student at Satbayev University and a full stack developer. I'm learning by building real projects in web development and software engineering.</p>
-                <p data-i18n="bioP2">I started programming with Python at 15, after getting my first PC. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.</p>
+            <section class="bio" aria-labelledby="bio-heading">
+                <div class="bio-toggle">
+                    <h2 id="bio-heading" data-i18n="bioLabel">Bio</h2>
+                    <div class="bio-toggle-options" role="group" aria-labelledby="bio-heading">
+                        <button type="button" data-bio="short" aria-pressed="true" aria-controls="bio-short" data-i18n="bioShort">Short</button>
+                        <button type="button" data-bio="long" aria-pressed="false" aria-controls="bio-long" data-i18n="bioLong">Long</button>
+                    </div>
+                </div>
+                <div class="prose" id="bio-short" data-bio-panel="short">
+                    <p data-i18n="bioP1">I'm a second-year Computer Science student at Satbayev University and a full stack developer. I'm learning by building real projects in web development and software engineering.</p>
+                    <p data-i18n="bioP2">I started programming with Python at 15, after getting my first PC. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.</p>
+                </div>
+                <div class="prose" id="bio-long" data-bio-panel="long" hidden>
+                    <p data-i18n="bioLongP1"></p>
+                    <p data-i18n="bioLongP2"></p>
+                </div>
             </section>
 
             <section class="section" aria-labelledby="projects-heading">

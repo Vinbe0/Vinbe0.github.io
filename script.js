@@ -13,7 +13,6 @@ const translations = {
         bioLongP1: "Hello! I'm a full stack developer with 0 years of professional experience, but a strong passion for learning and creating. I started programming with Python at the age of 15, after getting my first PC. I explored the basics, then took a 2-year break, but my curiosity never faded. In 2024, I enrolled at Satbayev University to study Cyber Security, but quickly realized my true interest lies in Computer Science, so I switched my major in 2025.",
         bioLongP2: "Now, as a second-year CS student, I’m eager to expand my knowledge, build practical projects, and improve my skills in web development and software engineering. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.",
         projectsTitle: "Projects",
-        projectsText: "Experiments, practice work, and ideas as they grow into better software.",
         projectsMore: "All projects →",
         skillsTitle: "Skills",
         linksTitle: "Elsewhere",
@@ -33,7 +32,6 @@ const translations = {
         bioLongP1: "Сәлем! Мен full stack әзірлеушімін, кәсіби тәжірибем жоқ, бірақ үйренуге және жаңа нәрселер жасауға қатты қызығамын. 15 жасымда бірінші компьютерімді сатып алғаннан кейін Python тілін үйрене бастадым. Негіздерін меңгеріп, 2 жыл үзіліс жасадым, бірақ қызығушылығым ешқашан төмендеген жоқ. 2024 жылы мен Сәтбаев университетіне Киберқауіпсіздік мамандығына түстім, бірақ шын мәніндегі қызығушылығым Компьютерлік ғылымдар екенін түсініп, 2025 жылы мамандықты өзгерттім.",
         bioLongP2: "Екінші курс студенті ретінде мен білімімді кеңейтуге, практикалық жобалар жасауға және веб-даму мен бағдарламалау дағдыларымды жетілдіруге ынталымын. Жаңа технологияларды сынап көру, проблемаларды шешу және идеяларды жүзеге асыру үшін басқалармен ынтымақтастықта болу маған ұнайды.",
         projectsTitle: "Жобалар",
-        projectsText: "Тәжірибелер, практикалық жұмыстар және жақсы бағдарламаларға айналып жатқан идеялар.",
         projectsMore: "Барлық жобалар →",
         skillsTitle: "Дағдылар",
         linksTitle: "Байланыс",
@@ -53,13 +51,18 @@ const translations = {
         bioLongP1: "Привет! Я full stack разработчик с нулевым профессиональным опытом, но с сильным желанием учиться и создавать. Я начал программировать на Python в 15 лет, когда купил свой первый ПК. Изучил основы, сделал паузу на 2 года, но интерес к программированию никогда не исчезал. В 2024 году я поступил в Университет Сатпаева на направление «Кибербезопасность», но быстро понял, что мой настоящий интерес — Computer Science, поэтому в 2025 году я сменил специальность.",
         bioLongP2: "Сейчас, будучи студентом второго курса, я стремлюсь расширять свои знания, создавать практические проекты и совершенствовать навыки в веб-разработке и программировании. Мне нравится экспериментировать с новыми технологиями, решать задачи и сотрудничать с другими, чтобы воплощать идеи в жизнь.",
         projectsTitle: "Проекты",
-        projectsText: "Эксперименты, практические работы и идеи, которые постепенно становятся лучше.",
         projectsMore: "Все проекты →",
         skillsTitle: "Навыки",
         linksTitle: "Ссылки",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
+
+const GITHUB_USER = "Vinbe0";
+const HIDDEN_REPOS = ["website", "Vinbe0.github.io"];
+const localeCodes = { English: "en", Kazakh: "kk", Russian: "ru" };
+const recentProjects = document.getElementById("recent-projects");
+let repos = [];
 
 const languageSelect = document.getElementById("language");
 const translatedNodes = document.querySelectorAll("[data-i18n]");
@@ -74,8 +77,78 @@ function updateLanguage(lang) {
         }
     });
 
-    document.documentElement.lang = lang === "Russian" ? "ru" : lang === "Kazakh" ? "kk" : "en";
+    document.documentElement.lang = localeCodes[lang] || "en";
     document.title = dictionary.pageTitle;
+    renderProjects();
+}
+
+function formatMonth(value) {
+    return new Intl.DateTimeFormat(document.documentElement.lang, {
+        month: "short",
+        year: "numeric"
+    }).format(new Date(value));
+}
+
+function renderProjects() {
+    if (!recentProjects || repos.length === 0) {
+        return;
+    }
+
+    const items = repos.map((repo) => {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        const label = document.createElement("span");
+        const meta = document.createElement("span");
+
+        link.href = repo.html_url;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        label.className = "row-label";
+        label.textContent = repo.name;
+        meta.className = "row-meta";
+        meta.textContent = [repo.language, formatMonth(repo.pushed_at)].filter(Boolean).join(" · ");
+
+        link.append(label, meta);
+        item.appendChild(link);
+        return item;
+    });
+
+    recentProjects.replaceChildren(...items);
+}
+
+async function loadProjects() {
+    const cacheKey = "repos";
+
+    try {
+        const cached = JSON.parse(sessionStorage.getItem(cacheKey));
+        if (Array.isArray(cached)) {
+            repos = cached;
+            renderProjects();
+            return;
+        }
+    } catch (error) {}
+
+    try {
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=pushed&per_page=30`);
+        if (!response.ok) {
+            throw new Error(`GitHub returned ${response.status}`);
+        }
+
+        const data = await response.json();
+        repos = data
+            .filter((repo) => !repo.fork && !HIDDEN_REPOS.includes(repo.name))
+            .slice(0, 5)
+            .map(({ name, html_url, language, pushed_at }) => ({ name, html_url, language, pushed_at }));
+
+        try {
+            sessionStorage.setItem(cacheKey, JSON.stringify(repos));
+        } catch (error) {}
+
+        renderProjects();
+    } catch (error) {
+        // Keep the static list from the HTML if GitHub is unavailable.
+        console.warn("Could not load GitHub projects:", error);
+    }
 }
 
 function initialLanguage() {
@@ -149,3 +222,4 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 languageSelect.value = initialLanguage();
 updateLanguage(languageSelect.value);
+loadProjects();

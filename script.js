@@ -67,6 +67,31 @@ languageSelect.addEventListener("change", (event) => {
     updateLanguage(event.target.value);
 });
 
+const themeToggle = document.getElementById("theme-toggle");
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+function activeTheme() {
+    return document.documentElement.dataset.theme || (darkQuery.matches ? "dark" : "light");
+}
+
+function syncThemeToggle() {
+    const theme = activeTheme();
+    document.documentElement.dataset.themeActive = theme;
+    themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+}
+
+themeToggle.addEventListener("click", () => {
+    const next = activeTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try {
+        localStorage.setItem("theme", next);
+    } catch (error) {}
+    syncThemeToggle();
+});
+
+darkQuery.addEventListener("change", syncThemeToggle);
+syncThemeToggle();
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 updateLanguage(languageSelect.value);

@@ -9,6 +9,31 @@
     --max-width: 640px;
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #111111;
+        --text: #e6e6e6;
+        --muted: #a3a3a3;
+        --subtle: #737373;
+        --line: rgba(255, 255, 255, 0.1);
+        --link-line: rgba(255, 255, 255, 0.25);
+        --surface: #1a1a1a;
+        color-scheme: dark;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #111111;
+    --text: #e6e6e6;
+    --muted: #a3a3a3;
+    --subtle: #737373;
+    --line: rgba(255, 255, 255, 0.1);
+    --link-line: rgba(255, 255, 255, 0.25);
+    --surface: #1a1a1a;
+    color-scheme: dark;
 }
 
 *,
@@ -93,6 +118,43 @@ a:hover {
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
     color: var(--text);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-toggle {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--muted);
+    background: transparent;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    color: var(--text);
+}
+
+.theme-toggle svg {
+    width: 15px;
+    height: 15px;
+}
+
+.theme-toggle .icon-moon,
+:root[data-theme-active="dark"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+:root[data-theme-active="dark"] .theme-toggle .icon-moon {
+    display: block;
 }
 
 .language-control select {

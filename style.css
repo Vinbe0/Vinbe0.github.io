@@ -359,38 +359,6 @@ main {
     color: var(--muted);
 }
 
-/* Row list: label on the left, meta on the right */
-
-.rows-list a,
-.rows-list .row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--line);
-    text-decoration: none;
-}
-
-.rows-list li:first-child a,
-.rows-list li:first-child .row {
-    border-top: 1px solid var(--line);
-}
-
-.rows-list .row-meta {
-    flex: 0 0 auto;
-    color: var(--subtle);
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    font-variant-numeric: tabular-nums;
-}
-
-.rows-list a:hover .row-label {
-    text-decoration: underline;
-    text-decoration-color: var(--link-line);
-    text-underline-offset: 3px;
-}
-
 /* Entry list: title and meta on one line, description below */
 
 .entry-list li {

@@ -62,7 +62,7 @@ const translations = {
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
-        pageTitle: "Nassimi Achmatylla",
+        pageTitle: "Насими Ашматулла",
         skipLink: "Мазмұнға өту",
         navHome: "Басты бет",
         navProjects: "Жобалар",
@@ -79,7 +79,7 @@ const translations = {
         projectsMore: "Барлық жобалар →",
         skillsTitle: "Дағдылар",
         linksTitle: "Байланыс",
-        projectsPageTitle: "Жобалар | Nassimi Achmatylla",
+        projectsPageTitle: "Жобалар | Насими Ашматулла",
         projectsSubtitle: "Ашық репозиторийлер:",
         projectsLoading: "Репозиторийлер жүктелуде…",
         projectsEmpty: "Әзірге ашық репозиторийлер жоқ.",
@@ -120,7 +120,7 @@ const translations = {
         skillsSpokenValue: "Ағылшын, орыс, парсы",
         skillsTesting: "автотестілеу",
         journeyAlt: "Гонконг зәулім үйлері мен Виктория шығанағы қарлы Тянь-Шань таулары, киіз үйлер мен алма бақтары бар Алматыға ұласатын түрлі-түсті сурет — менің жолым",
-        siteName: "Nassimi Achmatylla",
+        siteName: "Насими Ашматулла",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {

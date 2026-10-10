@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3D9MFTWED"></script>
@@ -12,127 +12,70 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio website for full stack developer Nassimi, a Computer Science student focused on web development and software engineering.">
-    <title>Nassimi | Full Stack Developer</title>
-    <link rel="stylesheet" href="reset.css">
+    <meta name="description" content="Ashmat Nassimi — Computer Science student at Satbayev University and full stack developer.">
+    <title>Ashmat Nassimi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="Nassimi home">
-            <span class="brand-mark">N</span>
-            <span>Nassimi</span>
-        </a>
-        <nav class="nav">
-            <a href="#about" data-i18n="navAbout">About</a>
-            <a href="#skills" data-i18n="navSkills">Skills</a>
-            <a href="github-projects/index.html" data-i18n="navProjects">Projects</a>
-            <a href="https://www.linkedin.com/in/ashmat-nasimi-7aaa68253/" target="_blank" rel="noreferrer">LinkedIn</a>
-        </nav>
-        <label class="language-control" for="language">
-            <span data-i18n="languageLabel">Language</span>
-            <select id="language" aria-label="Choose website language">
-                <option value="Kazakh">Kazakh</option>
-                <option value="Russian" selected>Russian</option>
-                <option value="English">English</option>
-            </select>
-        </label>
-    </header>
+    <div class="container">
+        <header class="site-header">
+            <nav class="site-nav" aria-label="Primary">
+                <a href="index.html" aria-current="page" data-i18n="navHome">Home</a>
+                <a href="github-projects/index.html" data-i18n="navProjects">Projects</a>
+            </nav>
+            <label class="language-control">
+                <span class="visually-hidden" data-i18n="languageLabel">Language</span>
+                <select id="language">
+                    <option value="English">English</option>
+                    <option value="Kazakh">Қазақша</option>
+                    <option value="Russian" selected>Русский</option>
+                </select>
+            </label>
+        </header>
 
-    <main id="top">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-copy">
-                <p class="eyebrow" data-i18n="eyebrow">Computer Science student and full stack developer</p>
-                <h1 id="hero-title" data-i18n="heroTitle">Nassimi builds clean, practical web experiences.</h1>
-                <p class="hero-text" data-i18n="heroText">
-                    I am focused on growing through real projects, software engineering fundamentals, and modern web development.
-                </p>
-                <div class="hero-actions" aria-label="Hero links">
-                    <a class="button button-primary" href="github-projects/index.html" data-i18n="primaryCta">View projects</a>
-                    <a class="button button-secondary" href="https://www.linkedin.com/in/ashmat-nasimi-7aaa68253/" target="_blank" rel="noreferrer" data-i18n="secondaryCta">Connect on LinkedIn</a>
-                </div>
-            </div>
-            <div class="hero-panel" aria-label="Developer profile summary">
-                <div class="profile-lockup">
-                    <div class="avatar" aria-hidden="true">N</div>
-                    <div>
-                        <p class="profile-name">Ashmat Nassimi</p>
-                        <p class="profile-role" data-i18n="profileRole">Full Stack Developer</p>
-                    </div>
-                </div>
-                <dl class="quick-stats">
-                    <div>
-                        <dt data-i18n="statStudy">Study</dt>
-                        <dd data-i18n="statStudyValue">Computer Science</dd>
-                    </div>
-                    <div>
-                        <dt data-i18n="statFocus">Focus</dt>
-                        <dd data-i18n="statFocusValue">Web development</dd>
-                    </div>
-                    <div>
-                        <dt data-i18n="statTools">Tools</dt>
-                        <dd>HTML, CSS, JS, Python</dd>
-                    </div>
-                </dl>
-            </div>
-        </section>
+        <main>
+            <h1 class="site-title">Ashmat Nassimi</h1>
+            <p class="site-subtitle" data-i18n="subtitle">Computer Science student · Full stack developer</p>
 
-        <section class="section intro-section" id="about" aria-labelledby="about-title">
-            <div class="section-kicker" data-i18n="aboutKicker">Main info</div>
-            <div class="section-grid">
-                <h2 id="about-title" data-i18n="aboutTitle">Curious developer with a practical path into Computer Science.</h2>
-                <div class="section-copy">
-                    <p data-i18n="aboutP1">
-                        Hello! I'm a full stack developer with 0 years of professional experience, but a strong passion for learning and creating. I started programming with Python at the age of 15, after getting my first PC. I explored the basics, then took a 2-year break, but my curiosity never faded. In 2024, I enrolled at Satbayev University to study Cyber Security, but quickly realized my true interest lies in Computer Science, so I switched my major in 2025.
-                    </p>
-                    <p data-i18n="aboutP2">
-                        Now, as a second-year CS student, I’m eager to expand my knowledge, build practical projects, and improve my skills in web development and software engineering. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.
-                    </p>
-                </div>
-            </div>
-        </section>
+            <section class="prose" aria-label="About">
+                <p data-i18n="bioP1">I'm a second-year Computer Science student at Satbayev University and a full stack developer. I'm learning by building real projects in web development and software engineering.</p>
+                <p data-i18n="bioP2">I started programming with Python at 15, after getting my first PC. I enjoy experimenting with new technologies, solving problems, and collaborating with others to bring ideas to life.</p>
+            </section>
 
-        <section class="section skills-section" id="skills" aria-labelledby="skills-title">
-            <div class="section-heading">
-                <div>
-                    <div class="section-kicker" data-i18n="skillsKicker">Capabilities</div>
-                    <h2 id="skills-title" data-i18n="skillsTitle">Skills I am building and using.</h2>
-                </div>
-                <p data-i18n="skillsIntro">A focused foundation across frontend, programming, tooling, and productivity software.</p>
-            </div>
-            <ul class="skills-list" aria-label="Skills">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>C++</li>
-                <li>Git</li>
-                <li>Word</li>
-                <li>Excel</li>
-                <li>PowerPoint</li>
-            </ul>
-        </section>
+            <section class="section" aria-labelledby="projects-heading">
+                <h2 id="projects-heading" data-i18n="projectsTitle">Projects</h2>
+                <p class="prose" data-i18n="projectsText">Experiments, practice work, and ideas as they grow into better software.</p>
+                <a class="more-link" href="github-projects/index.html" data-i18n="projectsMore">All projects →</a>
+            </section>
 
-        <section class="section project-section" aria-labelledby="project-title">
-            <div class="project-copy">
-                <div class="section-kicker" data-i18n="projectKicker">Work in progress</div>
-                <h2 id="project-title" data-i18n="projectTitle">Projects show the learning curve.</h2>
-                <p data-i18n="projectText">
-                    Explore the GitHub projects page to see experiments, practice work, and new ideas as they grow into better software.
-                </p>
-            </div>
-            <a class="project-link" href="github-projects/index.html">
-                <span data-i18n="projectCta">Open projects</span>
-                <span aria-hidden="true">-></span>
-            </a>
-        </section>
-    </main>
+            <section class="section" aria-labelledby="skills-heading">
+                <h2 id="skills-heading" data-i18n="skillsTitle">Skills</h2>
+                <ul class="columns-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C++</li>
+                    <li>Git</li>
+                    <li>Word, Excel, PowerPoint</li>
+                </ul>
+            </section>
 
-    <footer class="footer">
-        <p data-i18n="footerText">Available for collaboration, learning, and practical project work.</p>
-        <a href="https://www.linkedin.com/in/ashmat-nasimi-7aaa68253/" target="_blank" rel="noreferrer">LinkedIn</a>
-    </footer>
+            <section class="section" aria-labelledby="links-heading">
+                <h2 id="links-heading" data-i18n="linksTitle">Elsewhere</h2>
+                <ul class="columns-list">
+                    <li><a href="https://github.com/Vinbe0" target="_blank" rel="noreferrer">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/ashmat-nasimi-7aaa68253/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <span>© <span id="year">2026</span> Ashmat Nassimi</span>
+            <span data-i18n="footerText">Open to collaboration and practical project work.</span>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>

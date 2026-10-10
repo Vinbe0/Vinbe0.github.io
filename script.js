@@ -51,6 +51,12 @@ const translations = {
         eduSatbayevName: "Satbayev University",
         eduSatbayev: "Bachelor's Degree in Computer Science",
         eduSatbayevPlace: "Almaty, Kazakhstan",
+        skillsLanguages: "Languages",
+        skillsFrameworks: "Frameworks",
+        skillsBackend: "Backend & DevOps",
+        skillsSpoken: "Spoken",
+        skillsSpokenValue: "English, Russian, Persian",
+        skillsTesting: "automated testing",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -105,6 +111,12 @@ const translations = {
         eduSatbayevName: "Сәтбаев университеті",
         eduSatbayev: "Компьютерлік ғылымдар бакалавриаты",
         eduSatbayevPlace: "Алматы, Қазақстан",
+        skillsLanguages: "Бағдарламалау тілдері",
+        skillsFrameworks: "Фреймворктер",
+        skillsBackend: "Backend және DevOps",
+        skillsSpoken: "Тілдер",
+        skillsSpokenValue: "Ағылшын, орыс, парсы",
+        skillsTesting: "автотестілеу",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -159,6 +171,12 @@ const translations = {
         eduSatbayevName: "Университет Сатпаева",
         eduSatbayev: "Бакалавриат, Computer Science",
         eduSatbayevPlace: "Алматы, Казахстан",
+        skillsLanguages: "Языки программирования",
+        skillsFrameworks: "Фреймворки",
+        skillsBackend: "Backend и DevOps",
+        skillsSpoken: "Языки",
+        skillsSpokenValue: "Английский, русский, персидский",
+        skillsTesting: "автотесты",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };

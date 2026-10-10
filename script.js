@@ -1,6 +1,6 @@
 const translations = {
     English: {
-        pageTitle: "Ashmat Nassimi",
+        pageTitle: "Nassimi Achmatylla",
         skipLink: "Skip to content",
         navHome: "Home",
         navProjects: "Projects",
@@ -17,7 +17,7 @@ const translations = {
         projectsMore: "All projects →",
         skillsTitle: "Skills",
         linksTitle: "Elsewhere",
-        projectsPageTitle: "Projects | Ashmat Nassimi",
+        projectsPageTitle: "Projects | Nassimi Achmatylla",
         projectsSubtitle: "Public repositories from",
         projectsLoading: "Loading repositories…",
         projectsEmpty: "No public repositories yet.",
@@ -58,10 +58,11 @@ const translations = {
         skillsSpokenValue: "English, Russian, Persian",
         skillsTesting: "automated testing",
         journeyAlt: "A colorful hand-painted illustration blending the Hong Kong skyline and Victoria Harbour into Almaty, with the snowy Tien Shan mountains, yurts and apple orchards, representing my journey",
+        siteName: "Nassimi Achmatylla",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
-        pageTitle: "Ашмат Насими",
+        pageTitle: "Насими Ашматулла",
         skipLink: "Мазмұнға өту",
         navHome: "Басты бет",
         navProjects: "Жобалар",
@@ -78,7 +79,7 @@ const translations = {
         projectsMore: "Барлық жобалар →",
         skillsTitle: "Дағдылар",
         linksTitle: "Байланыс",
-        projectsPageTitle: "Жобалар | Ашмат Насими",
+        projectsPageTitle: "Жобалар | Насими Ашматулла",
         projectsSubtitle: "Ашық репозиторийлер:",
         projectsLoading: "Репозиторийлер жүктелуде…",
         projectsEmpty: "Әзірге ашық репозиторийлер жоқ.",
@@ -119,10 +120,11 @@ const translations = {
         skillsSpokenValue: "Ағылшын, орыс, парсы",
         skillsTesting: "автотестілеу",
         journeyAlt: "Гонконг зәулім үйлері мен Виктория шығанағы қарлы Тянь-Шань таулары, киіз үйлер мен алма бақтары бар Алматыға ұласатын түрлі-түсті сурет — менің жолым",
+        siteName: "Насими Ашматулла",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
-        pageTitle: "Ашмат Насими",
+        pageTitle: "Насими Ашматулла",
         skipLink: "Перейти к содержимому",
         navHome: "Главная",
         navProjects: "Проекты",
@@ -139,7 +141,7 @@ const translations = {
         projectsMore: "Все проекты →",
         skillsTitle: "Навыки",
         linksTitle: "Ссылки",
-        projectsPageTitle: "Проекты | Ашмат Насими",
+        projectsPageTitle: "Проекты | Насими Ашматулла",
         projectsSubtitle: "Публичные репозитории с",
         projectsLoading: "Загрузка репозиториев…",
         projectsEmpty: "Публичных репозиториев пока нет.",
@@ -180,6 +182,7 @@ const translations = {
         skillsSpokenValue: "Английский, русский, персидский",
         skillsTesting: "автотесты",
         journeyAlt: "Яркая рисованная иллюстрация, где небоскрёбы Гонконга и бухта Виктория переходят в Алматы со снежными горами Тянь-Шаня, юртами и яблоневыми садами, — мой путь",
+        siteName: "Насими Ашматулла",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };

@@ -125,6 +125,47 @@ a:hover {
     margin: 0 auto;
 }
 
+/* Side illustration, shown next to the content on wide screens */
+
+.home-visual {
+    display: none;
+}
+
+@media (min-width: 1080px) {
+    .page-layout {
+        display: grid;
+        grid-template-columns: minmax(0, var(--max-width)) minmax(0, 470px);
+        gap: 56px;
+        justify-content: center;
+        align-items: start;
+        padding: 0 32px;
+    }
+
+    .page-layout .container {
+        width: auto;
+        margin: 0;
+    }
+
+    .home-visual {
+        position: sticky;
+        top: 48px;
+        display: block;
+        height: calc(100vh - 96px);
+        margin-top: 48px;
+        overflow: hidden;
+        border-radius: 10px;
+        background: var(--surface);
+    }
+
+    .home-visual img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
 /* Header */
 
 .site-header {

@@ -57,6 +57,7 @@ const translations = {
         skillsSpoken: "Spoken",
         skillsSpokenValue: "English, Russian, Persian",
         skillsTesting: "automated testing",
+        journeyAlt: "A colorful hand-painted illustration blending the Hong Kong skyline and Victoria Harbour into Almaty, with the snowy Tien Shan mountains, yurts and apple orchards, representing my journey",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -117,6 +118,7 @@ const translations = {
         skillsSpoken: "Тілдер",
         skillsSpokenValue: "Ағылшын, орыс, парсы",
         skillsTesting: "автотестілеу",
+        journeyAlt: "Гонконг зәулім үйлері мен Виктория шығанағы қарлы Тянь-Шань таулары, киіз үйлер мен алма бақтары бар Алматыға ұласатын түрлі-түсті сурет — менің жолым",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -177,6 +179,7 @@ const translations = {
         skillsSpoken: "Языки",
         skillsSpokenValue: "Английский, русский, персидский",
         skillsTesting: "автотесты",
+        journeyAlt: "Яркая рисованная иллюстрация, где небоскрёбы Гонконга и бухта Виктория переходят в Алматы со снежными горами Тянь-Шаня, юртами и яблоневыми садами, — мой путь",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -202,6 +205,10 @@ function updateLanguage(lang) {
         if (dictionary[key]) {
             node.textContent = dictionary[key];
         }
+    });
+
+    document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
+        node.alt = t(node.dataset.i18nAlt);
     });
 
     document.documentElement.lang = localeCodes[lang] || "en";

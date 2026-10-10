@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GitHub projects and feedback page for Nassimi, a full stack developer and Computer Science student.">
+    <title>Nassimi | GitHub Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header" aria-label="Primary navigation">
+        <a class="brand" href="../index.html" aria-label="Back to Nassimi home">
+            <span class="brand-mark">N</span>
+            <span>Nassimi</span>
+        </a>
+        <nav class="nav">
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#skills">Skills</a>
+            <a href="#projects-section">Projects</a>
+            <a href="#feedback">Feedback</a>
+        </nav>
+        <a class="header-link" href="https://github.com/Vinbe0" target="_blank" rel="noreferrer">GitHub</a>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <p class="eyebrow">GitHub workspace</p>
+                <h1 id="page-title">Projects, experiments, and learning in public.</h1>
+                <p class="hero-text">
+                    A live project board that pulls repositories from GitHub and keeps the portfolio connected to real code.
+                </p>
+                <div class="hero-actions">
+                    <button class="button button-primary" id="load" type="button">Load projects</button>
+                    <a class="button button-secondary" href="../index.html">Back to portfolio</a>
+                </div>
+            </div>
+            <aside class="hero-panel" aria-label="Projects summary">
+                <p class="panel-label">Source</p>
+                <p class="panel-value">github.com/Vinbe0</p>
+                <p class="panel-label">Includes</p>
+                <p class="panel-value">repositories, languages, stars, updates</p>
+            </aside>
+        </section>
+
+        <section class="section" id="projects-section" aria-labelledby="projects-title">
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">Repository feed</p>
+                    <h2 id="projects-title">GitHub Projects</h2>
+                </div>
+                <p class="section-note">Click load to fetch current public repositories.</p>
+            </div>
+            <div class="status-message" id="projects-status" role="status">
+                Projects are ready to load.
+            </div>
+            <div class="projects-grid" id="project-list" aria-live="polite"></div>
+        </section>
+
+        <section class="section feedback-section" id="feedback" aria-labelledby="feedback-title">
+            <div class="feedback-copy">
+                <p class="section-kicker">Feedback</p>
+                <h2 id="feedback-title">Share your opinion.</h2>
+                <p>
+                    Feedback helps improve the portfolio, projects, and presentation of the work.
+                </p>
+            </div>
+
+            <div class="form-shell">
+                <form novalidate action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="9587df79-2d5b-438d-8807-06b0e6f88028">
+
+                    <label>
+                        <span>Your name</span>
+                        <input type="text" name="name" placeholder="Your name" required>
+                    </label>
+
+                    <label>
+                        <span>Your email</span>
+                        <input type="email" name="email" placeholder="you@example.com" required>
+                    </label>
+
+                    <label>
+                        <span>Message</span>
+                        <textarea name="message" placeholder="Please share your opinion" required></textarea>
+                    </label>
+
+                    <button class="button button-primary" id="submit" type="submit">Submit feedback</button>
+                </form>
+
+                <div id="form-message" role="status"></div>
+
+                <p id="feedback-success">
+                    Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Nassimi portfolio projects page.</p>
+        <a href="../index.html">Back home</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

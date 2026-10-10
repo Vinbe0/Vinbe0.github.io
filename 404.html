@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Page not found | Ashmat Nassimi</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1 class="site-title">404</h1>
+            <p class="site-subtitle">Page not found · Страница не найдена · Бет табылмады</p>
+            <div class="prose">
+                <p>The page you're looking for doesn't exist or has moved.</p>
+                <p><a href="/">← Back home</a></p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

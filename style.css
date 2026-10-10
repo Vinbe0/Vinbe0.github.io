@@ -131,6 +131,22 @@ a:hover {
     display: none;
 }
 
+.mobile-visual {
+    margin: 32px 0 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--surface);
+    aspect-ratio: 4 / 5;
+}
+
+.mobile-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 @media (min-width: 1080px) {
     .page-layout {
         display: grid;
@@ -144,6 +160,10 @@ a:hover {
     .page-layout .container {
         width: auto;
         margin: 0;
+    }
+
+    .mobile-visual {
+        display: none;
     }
 
     .home-visual {

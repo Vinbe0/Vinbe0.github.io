@@ -1,152 +1,116 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loadBtn = document.getElementById("load");
-    const projectsContainer = document.getElementById("project-list");
-    const projectsStatus = document.getElementById("projects-status");
+const projectList = document.getElementById("project-list");
+const projectsStatus = document.getElementById("projects-status");
+const form = document.querySelector(".feedback-form");
+const submitBtn = document.getElementById("submit");
+const formMessage = document.getElementById("form-message");
 
-    const form = document.querySelector("form");
-    const submitBtn = form.querySelector("button[type='submit']");
-    const feedbackSuccess = document.getElementById("feedback-success");
-    const formMessage = document.getElementById("form-message");
+let allRepos = null;
 
-    const username = "Vinbe0";
+function setStatus(node, key, type = "info") {
+    node.hidden = false;
+    node.dataset.i18n = key;
+    node.dataset.state = type;
+    node.textContent = t(key);
+}
 
-    function setProjectsStatus(text, type = "info") {
-        projectsStatus.textContent = text;
-        projectsStatus.className = "status-message";
-        projectsStatus.classList.add(`form-${type}`);
+function renderRepo(repo) {
+    const item = document.createElement("li");
+    const header = document.createElement("div");
+    const title = document.createElement("a");
+    const meta = document.createElement("span");
+
+    header.className = "project-header";
+    title.href = repo.html_url;
+    title.target = "_blank";
+    title.rel = "noreferrer";
+    title.textContent = repo.name;
+
+    meta.className = "row-meta";
+    const parts = [repo.language, formatDate(repo.pushed_at, { day: true })];
+    if (repo.stargazers_count > 0) {
+        parts.push(`★ ${repo.stargazers_count}`);
+    }
+    meta.textContent = parts.filter(Boolean).join(" · ");
+
+    header.append(title, meta);
+    item.appendChild(header);
+
+    if (repo.description) {
+        const description = document.createElement("p");
+        description.className = "project-description";
+        description.textContent = repo.description;
+        item.appendChild(description);
     }
 
-    function showFormMessage(text, type) {
-        formMessage.textContent = text;
-        formMessage.className = "";
-        formMessage.classList.add(`form-${type}`);
-        formMessage.style.display = "block";
+    return item;
+}
+
+function renderRepos() {
+    if (!allRepos) {
+        return;
     }
+    projectList.replaceChildren(...allRepos.map(renderRepo));
+}
 
-    function formatDate(value) {
-        return new Intl.DateTimeFormat("en", {
-            month: "short",
-            day: "numeric",
-            year: "numeric"
-        }).format(new Date(value));
-    }
-
-    function renderRepo(repo) {
-        const card = document.createElement("article");
-        card.className = "repo-card";
-
-        const language = repo.language || "Code";
-        const description = repo.description || "No description added yet.";
-
-        const body = document.createElement("div");
-        const title = document.createElement("h3");
-        const summary = document.createElement("p");
-        title.textContent = repo.name;
-        summary.textContent = description;
-        body.append(title, summary);
-
-        const meta = document.createElement("div");
-        meta.className = "repo-meta";
-        meta.setAttribute("aria-label", "Repository metadata");
-
-        [language, `${repo.stargazers_count} stars`, `Updated ${formatDate(repo.updated_at)}`].forEach((text) => {
-            const item = document.createElement("span");
-            item.textContent = text;
-            meta.appendChild(item);
-        });
-
-        const link = document.createElement("a");
-        link.href = repo.html_url;
-        link.target = "_blank";
-        link.rel = "noreferrer";
-        link.textContent = "Open repo";
-
-        card.append(body, meta, link);
-
-        return card;
-    }
-
-    async function loadProjects() {
-        loadBtn.disabled = true;
-        loadBtn.textContent = "Loading...";
-        projectsContainer.innerHTML = "";
-        setProjectsStatus("Loading repositories from GitHub...", "info");
-
-        try {
-            const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
-
-            if (!response.ok) {
-                throw new Error(`GitHub returned ${response.status}`);
-            }
-
-            const repos = await response.json();
-
-            if (!Array.isArray(repos) || repos.length === 0) {
-                setProjectsStatus("No public repositories were found for this GitHub profile.", "error");
-                loadBtn.disabled = false;
-                loadBtn.textContent = "Try again";
-                return;
-            }
-
-            const fragment = document.createDocumentFragment();
-            repos.forEach((repo) => {
-                fragment.appendChild(renderRepo(repo));
-            });
-            projectsContainer.appendChild(fragment);
-
-            setProjectsStatus(`Loaded ${repos.length} public repositories from GitHub.`, "success");
-            loadBtn.textContent = "Projects loaded";
-        } catch (error) {
-            console.error("Error loading projects:", error);
-            setProjectsStatus("Could not load GitHub projects. Check the username or try again later.", "error");
-            loadBtn.disabled = false;
-            loadBtn.textContent = "Try again";
+async function loadRepos() {
+    try {
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=pushed&per_page=100`);
+        if (!response.ok) {
+            throw new Error(`GitHub returned ${response.status}`);
         }
-    }
 
-    loadBtn.addEventListener("click", loadProjects);
+        const repos = await response.json();
+        allRepos = repos.filter((repo) => !repo.fork && !HIDDEN_REPOS.includes(repo.name));
 
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        if (
-            !form.name.value.trim() ||
-            !form.email.value.trim() ||
-            !form.message.value.trim()
-        ) {
-            showFormMessage("Please fill in all fields.", "error");
+        if (allRepos.length === 0) {
+            setStatus(projectsStatus, "projectsEmpty");
             return;
         }
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-        showFormMessage("Sending your feedback...", "info");
+        projectsStatus.hidden = true;
+        renderRepos();
+    } catch (error) {
+        console.error("Error loading projects:", error);
+        setStatus(projectsStatus, "projectsError", "error");
+    }
+}
 
-        const formData = new FormData(form);
-        formData.set("access_key", "9587df79-2d5b-438d-8807-06b0e6f88028");
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData
-            });
+    if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
+        setStatus(formMessage, "formMissing", "error");
+        return;
+    }
 
-            const result = await response.json();
+    if (!form.email.checkValidity()) {
+        setStatus(formMessage, "formInvalidEmail", "error");
+        return;
+    }
 
-            if (result.success) {
-                form.style.display = "none";
-                formMessage.style.display = "none";
-                feedbackSuccess.style.display = "block";
-            } else {
-                showFormMessage("Submission failed. Please try again.", "error");
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Submit feedback";
-            }
-        } catch (error) {
-            console.error(error);
-            showFormMessage("Network error. Try again later.", "error");
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit feedback";
+    submitBtn.disabled = true;
+    setStatus(formMessage, "formSending");
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form)
+        });
+        const result = await response.json();
+
+        if (!result.success) {
+            throw new Error(result.message || "Submission failed");
         }
-    });
+
+        form.hidden = true;
+        setStatus(formMessage, "formSuccess", "success");
+    } catch (error) {
+        console.error(error);
+        setStatus(formMessage, "formError", "error");
+        submitBtn.disabled = false;
+    }
 });
+
+document.addEventListener("sitelanguagechange", renderRepos);
+
+loadRepos();

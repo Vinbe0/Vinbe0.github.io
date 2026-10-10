@@ -16,6 +16,23 @@ const translations = {
         projectsMore: "All projects →",
         skillsTitle: "Skills",
         linksTitle: "Elsewhere",
+        projectsPageTitle: "Projects | Ashmat Nassimi",
+        projectsSubtitle: "Public repositories from",
+        projectsLoading: "Loading repositories…",
+        projectsEmpty: "No public repositories yet.",
+        projectsError: "Could not load repositories from GitHub. Try again later.",
+        feedbackTitle: "Feedback",
+        feedbackText: "Notes on the site or a project are always welcome.",
+        formName: "Name",
+        formEmail: "Email",
+        formMessage: "Message",
+        formSubmit: "Send",
+        formMissing: "Please fill in all fields.",
+        formInvalidEmail: "Please enter a valid email address.",
+        formSending: "Sending…",
+        formSuccess: "Thank you for your feedback!",
+        formError: "Something went wrong. Please try again later.",
+        backHome: "Back home",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -35,6 +52,23 @@ const translations = {
         projectsMore: "Барлық жобалар →",
         skillsTitle: "Дағдылар",
         linksTitle: "Байланыс",
+        projectsPageTitle: "Жобалар | Ашмат Насими",
+        projectsSubtitle: "Ашық репозиторийлер:",
+        projectsLoading: "Репозиторийлер жүктелуде…",
+        projectsEmpty: "Әзірге ашық репозиторийлер жоқ.",
+        projectsError: "GitHub-тан репозиторийлерді жүктеу мүмкін болмады. Кейінірек қайталап көріңіз.",
+        feedbackTitle: "Кері байланыс",
+        feedbackText: "Сайт немесе жоба туралы пікірлеріңізге әрқашан қуаныштымын.",
+        formName: "Атыңыз",
+        formEmail: "Email",
+        formMessage: "Хабарлама",
+        formSubmit: "Жіберу",
+        formMissing: "Барлық өрістерді толтырыңыз.",
+        formInvalidEmail: "Дұрыс email енгізіңіз.",
+        formSending: "Жіберілуде…",
+        formSuccess: "Пікіріңізге рахмет!",
+        formError: "Қате орын алды. Кейінірек қайталап көріңіз.",
+        backHome: "Басты бетке",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -54,6 +88,23 @@ const translations = {
         projectsMore: "Все проекты →",
         skillsTitle: "Навыки",
         linksTitle: "Ссылки",
+        projectsPageTitle: "Проекты | Ашмат Насими",
+        projectsSubtitle: "Публичные репозитории с",
+        projectsLoading: "Загрузка репозиториев…",
+        projectsEmpty: "Публичных репозиториев пока нет.",
+        projectsError: "Не удалось загрузить репозитории с GitHub. Попробуйте позже.",
+        feedbackTitle: "Обратная связь",
+        feedbackText: "Буду рад любым замечаниям о сайте или проектах.",
+        formName: "Имя",
+        formEmail: "Email",
+        formMessage: "Сообщение",
+        formSubmit: "Отправить",
+        formMissing: "Пожалуйста, заполните все поля.",
+        formInvalidEmail: "Введите корректный email.",
+        formSending: "Отправка…",
+        formSuccess: "Спасибо за отзыв!",
+        formError: "Что-то пошло не так. Попробуйте позже.",
+        backHome: "На главную",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -65,12 +116,16 @@ const recentProjects = document.getElementById("recent-projects");
 let repos = [];
 
 const languageSelect = document.getElementById("language");
-const translatedNodes = document.querySelectorAll("[data-i18n]");
+let dictionary = translations.English;
+
+function t(key) {
+    return dictionary[key] || translations.English[key] || key;
+}
 
 function updateLanguage(lang) {
-    const dictionary = translations[lang] || translations.English;
+    dictionary = translations[lang] || translations.English;
 
-    translatedNodes.forEach((node) => {
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
         const key = node.dataset.i18n;
         if (dictionary[key]) {
             node.textContent = dictionary[key];
@@ -78,15 +133,28 @@ function updateLanguage(lang) {
     });
 
     document.documentElement.lang = localeCodes[lang] || "en";
-    document.title = dictionary.pageTitle;
+    document.title = t(document.body.dataset.pageTitle || "pageTitle");
     renderProjects();
+    document.dispatchEvent(new CustomEvent("sitelanguagechange"));
 }
 
-function formatMonth(value) {
-    return new Intl.DateTimeFormat(document.documentElement.lang, {
+// Some browsers ship without Kazakh month names, so format those by hand.
+const kazakhMonths = ["қаң.", "ақп.", "нау.", "сәу.", "мам.", "мау.", "шіл.", "там.", "қыр.", "қаз.", "қар.", "жел."];
+
+function formatDate(value, { day = false } = {}) {
+    const date = new Date(value);
+    const lang = document.documentElement.lang;
+
+    if (lang === "kk") {
+        const month = `${kazakhMonths[date.getMonth()]} ${date.getFullYear()}`;
+        return day ? `${date.getDate()} ${month}` : month;
+    }
+
+    return new Intl.DateTimeFormat(lang, {
+        day: day ? "numeric" : undefined,
         month: "short",
         year: "numeric"
-    }).format(new Date(value));
+    }).format(date);
 }
 
 function renderProjects() {
@@ -106,7 +174,7 @@ function renderProjects() {
         label.className = "row-label";
         label.textContent = repo.name;
         meta.className = "row-meta";
-        meta.textContent = [repo.language, formatMonth(repo.pushed_at)].filter(Boolean).join(" · ");
+        meta.textContent = [repo.language, formatDate(repo.pushed_at)].filter(Boolean).join(" · ");
 
         link.append(label, meta);
         item.appendChild(link);

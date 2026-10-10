@@ -34,6 +34,17 @@ const translations = {
         formSuccess: "Thank you for your feedback!",
         formError: "Something went wrong. Please try again later.",
         backHome: "Back home",
+        experienceTitle: "Experience",
+        present: "Present",
+        roleCto: "CTO",
+        roleFullStack: "Full-Stack Developer",
+        roleFrontend: "Frontend Developer",
+        expQwrt: "Building a publishing platform for indie games from Central Asia with Django REST, React, PostgreSQL, Docker and MinIO: game catalogs, studio profiles, events, game jams and downloadable builds, with JWT auth and role-based permissions. Partnering with AstanaHub on an upcoming game jam whose games will be published on the platform.",
+        expEmo: "Core team member of an MVP-stage player-insight analytics SDK for game studios. Built a narrative whiteboard in Vue 3 and TypeScript, a frame-by-frame timeline editor that visualizes emotions and behavior, and a Telegram bot for error alerts.",
+        expCenterPro: "Helped build an AI career-guidance platform from scratch with React and Next.js, and integrated a payment system to monetize it.",
+        expAkira: "Added game publishing, a gallery, video content and an events page to the Almaty Game Developers Club platform, built an admin panel, and ran a full audit and bug-fixing pass.",
+        entrepreneurshipTitle: "Entrepreneurship",
+        entHkTech: "Person-in-Charge (PIC) applicant for EmoSDK at the HK Tech 300 Seed Fund.",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -71,6 +82,17 @@ const translations = {
         formSuccess: "Пікіріңізге рахмет!",
         formError: "Қате орын алды. Кейінірек қайталап көріңіз.",
         backHome: "Басты бетке",
+        experienceTitle: "Тәжірибе",
+        present: "қазір",
+        roleCto: "CTO",
+        roleFullStack: "Full-stack әзірлеуші",
+        roleFrontend: "Frontend әзірлеуші",
+        expQwrt: "Орталық Азиядағы инди-ойындарды жариялауға арналған платформаны Django REST, React, PostgreSQL, Docker және MinIO арқылы жасап жатырмын: ойын каталогтары, студия профильдері, іс-шаралар, геймджемдер және жүктеп алынатын билдтер, JWT аутентификациясы және рөлдік рұқсаттар. AstanaHub-пен бірге геймджем дайындап жатырмыз, оның ойындары платформада жарияланады.",
+        expEmo: "Ойын студияларына арналған, MVP кезеңіндегі ойыншыларды талдау SDK-сының негізгі командасының мүшесімін. Vue 3 және TypeScript-те нарративтік интерактивті тақта, эмоциялар мен мінез-құлықты кадр бойынша көрсететін таймлайн редакторын және қателер туралы хабарлайтын Telegram-ботты жасадым.",
+        expCenterPro: "React және Next.js негізінде мансапқа бағдар беретін AI-платформаны нөлден бастап жасауға қатыстым және монетизация үшін төлем жүйесін біріктірдім.",
+        expAkira: "Алматы ойын әзірлеушілері клубының платформасына ойын жариялау, галерея, бейне және іс-шаралар бетін қостым, әкімші панелін жасадым және толық аудит жүргізіп, қателерді түзеттім.",
+        entrepreneurshipTitle: "Кәсіпкерлік",
+        entHkTech: "HK Tech 300 Seed Fund бағдарламасына EmoSDK атынан Person-in-Charge (PIC) өтінім беруші.",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -108,6 +130,17 @@ const translations = {
         formSuccess: "Спасибо за отзыв!",
         formError: "Что-то пошло не так. Попробуйте позже.",
         backHome: "На главную",
+        experienceTitle: "Опыт",
+        present: "н. в.",
+        roleCto: "CTO",
+        roleFullStack: "Full-stack разработчик",
+        roleFrontend: "Frontend-разработчик",
+        expQwrt: "Создаю платформу для публикации инди-игр из Центральной Азии на Django REST, React, PostgreSQL, Docker и MinIO: каталоги игр, профили студий, события, геймджемы и загрузка билдов, JWT-аутентификация и ролевые права. Вместе с AstanaHub готовим геймджем, игры с которого будут опубликованы на платформе.",
+        expEmo: "Участник основной команды аналитического SDK для игровых студий на стадии MVP. Сделал интерактивную доску для нарративов на Vue 3 и TypeScript, редактор таймлайна для покадрового анализа эмоций и поведения игроков и Telegram-бота для оповещений об ошибках.",
+        expCenterPro: "Участвовал в создании AI-платформы для профориентации с нуля на React и Next.js и интегрировал платёжную систему для монетизации.",
+        expAkira: "Добавил на платформу Клуба геймдевелоперов Алматы публикацию игр, галерею, видео и страницу событий, разработал админ-панель и провёл полный аудит с исправлением багов.",
+        entrepreneurshipTitle: "Предпринимательство",
+        entHkTech: "Заявитель на роль Person-in-Charge (PIC) от EmoSDK в HK Tech 300 Seed Fund.",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -137,6 +170,7 @@ function updateLanguage(lang) {
 
     document.documentElement.lang = localeCodes[lang] || "en";
     document.title = t(document.body.dataset.pageTitle || "pageTitle");
+    renderDateRanges();
     renderProjects();
     document.dispatchEvent(new CustomEvent("sitelanguagechange"));
 }
@@ -158,6 +192,15 @@ function formatDate(value, { day = false } = {}) {
         month: "short",
         year: "numeric"
     }).format(date);
+}
+
+function renderDateRanges() {
+    document.querySelectorAll(".date-range").forEach((node) => {
+        const { dateStart, dateEnd } = node.dataset;
+        const start = formatDate(`${dateStart}T12:00:00`);
+        const end = dateEnd ? formatDate(`${dateEnd}T12:00:00`) : t("present");
+        node.textContent = start === end ? start : `${start} – ${end}`;
+    });
 }
 
 function renderProjects() {

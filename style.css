@@ -133,7 +133,7 @@ a:hover {
     overflow: hidden;
     border-radius: 10px;
     background: var(--surface);
-    aspect-ratio: 1024 / 572;
+    aspect-ratio: 1400 / 593;
 }
 
 .mobile-visual img {
@@ -243,6 +243,13 @@ a:hover {
 
 main {
     padding: 56px 0 24px;
+}
+
+/* Below the desktop breakpoint the banner opens the page, so keep it close to the header. */
+@media (max-width: 1079px) {
+    .site-header + main {
+        padding-top: 20px;
+    }
 }
 
 .site-title {
@@ -443,10 +450,6 @@ main {
 
     .site-header {
         padding-top: 24px;
-    }
-
-    main {
-        padding-top: 40px;
     }
 
     .columns-list {

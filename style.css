@@ -245,6 +245,13 @@ main {
     padding: 56px 0 24px;
 }
 
+/* Below the desktop breakpoint the banner opens the page, so keep it close to the header. */
+@media (max-width: 1079px) {
+    .site-header + main {
+        padding-top: 20px;
+    }
+}
+
 .site-title {
     margin-bottom: 4px;
     font-size: 2.1rem;
@@ -443,10 +450,6 @@ main {
 
     .site-header {
         padding-top: 24px;
-    }
-
-    main {
-        padding-top: 40px;
     }
 
     .columns-list {

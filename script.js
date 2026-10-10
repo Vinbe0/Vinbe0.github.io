@@ -309,15 +309,7 @@ function initialLanguage() {
         }
     } catch (error) {}
 
-    const browserLanguages = navigator.languages || [navigator.language || ""];
-    for (const code of browserLanguages) {
-        const base = code.toLowerCase().split("-")[0];
-        if (base === "kk") return "Kazakh";
-        if (base === "ru") return "Russian";
-        if (base === "en") return "English";
-    }
-
-    return "Russian";
+    return "English";
 }
 
 languageSelect.addEventListener("change", (event) => {

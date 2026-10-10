@@ -56,6 +56,15 @@
             </header>
 
             <main id="content">
+                <figure class="mobile-visual">
+                    <picture>
+                        <!-- Narrow screens get a wide banner; the tall version lives in the desktop side column. -->
+                        <source media="(max-width: 1079px)" srcset="images/journey-wide.webp" type="image/webp">
+                        <source media="(max-width: 1079px)" srcset="images/journey-wide.jpg">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="1024" height="572" decoding="async" alt="A colorful hand-painted illustration blending the Hong Kong skyline and Victoria Harbour into Almaty, with the snowy Tien Shan mountains, yurts and apple orchards, representing my journey" data-i18n-alt="journeyAlt">
+                    </picture>
+                </figure>
+
                 <h1 class="site-title" data-i18n="siteName">Nassimi Achmatylla</h1>
                 <p class="site-subtitle" data-i18n="subtitle">Full-stack developer · CTO at qwrt.ca · Co-founder of EmoSDK</p>
 
@@ -76,15 +85,6 @@
                         <p data-i18n="bioLongP2"></p>
                     </div>
                 </section>
-
-                <figure class="mobile-visual">
-                    <picture>
-                        <!-- Below the desktop breakpoint the illustration sits in the page flow instead of the side column. -->
-                        <source media="(max-width: 1079px)" srcset="images/journey-720.webp 720w, images/journey.webp 940w" sizes="(max-width: 672px) calc(100vw - 32px), 640px" type="image/webp">
-                        <source media="(max-width: 1079px)" srcset="images/journey-720.jpg 720w, images/journey.jpg 940w" sizes="(max-width: 672px) calc(100vw - 32px), 640px">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="720" height="981" loading="lazy" decoding="async" alt="A colorful hand-painted illustration blending the Hong Kong skyline and Victoria Harbour into Almaty, with the snowy Tien Shan mountains, yurts and apple orchards, representing my journey" data-i18n-alt="journeyAlt">
-                    </picture>
-                </figure>
 
                 <section class="section" aria-labelledby="experience-heading">
                     <h2 id="experience-heading" data-i18n="experienceTitle">Experience</h2>

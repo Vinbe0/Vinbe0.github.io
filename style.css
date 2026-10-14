@@ -8,6 +8,7 @@
     --surface: #f6f6f5;
     --current: #16a34a;
     --max-width: 640px;
+    --sticky-offset: 72px;
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color-scheme: light;
@@ -55,7 +56,8 @@ html {
 }
 
 .section {
-    scroll-margin-top: 24px;
+    /* Land section headings just below the sticky header */
+    scroll-margin-top: var(--sticky-offset);
 }
 
 body {
@@ -223,14 +225,41 @@ a[target="_blank"]:hover::after {
 /* Header */
 
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 40px 0 0;
+    margin-top: 28px;
+    padding: 12px 0;
     font-family: var(--sans);
     font-size: 0.82rem;
+}
+
+/* Translucent, blurred backdrop that bleeds slightly past the column edges */
+.site-header::before,
+.site-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0 -16px;
+    z-index: -1;
+    border-bottom: 1px solid transparent;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: border-color 150ms ease;
+}
+
+.site-nav::before {
+    display: none;
+}
+
+.site-header.is-stuck::before,
+.site-nav.is-stuck::before {
+    border-bottom-color: var(--line);
 }
 
 .site-nav {
@@ -588,27 +617,66 @@ main {
 }
 
 /* Phones: controls on top, section links spread across their own row */
+/* Phones: only the section links stay pinned; the controls scroll away */
 @media (max-width: 560px) {
+    :root {
+        --sticky-offset: 60px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .site-header {
-        row-gap: 14px;
+        display: contents;
+    }
+
+    .site-header::before {
+        display: none;
+    }
+
+    .header-controls {
+        order: 1;
+        justify-content: flex-end;
+        padding-top: 24px;
+        font-family: var(--sans);
+        font-size: 0.82rem;
     }
 
     .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
         order: 2;
         justify-content: space-between;
-        width: 100%;
-        padding-top: 10px;
+        margin-top: 14px;
+        padding: 10px 0;
         border-top: 1px solid var(--line);
+        font-family: var(--sans);
+        font-size: 0.82rem;
+    }
+
+    .site-nav::before {
+        display: block;
+    }
+
+    .site-nav.is-stuck {
+        border-top-color: transparent;
+    }
+
+    main {
+        order: 3;
+    }
+
+    .site-footer {
+        order: 4;
     }
 }
 
 @media (max-width: 480px) {
     body {
         font-size: 16px;
-    }
-
-    .site-header {
-        padding-top: 24px;
     }
 
     .columns-list {

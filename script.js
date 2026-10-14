@@ -306,8 +306,21 @@ navLinks.forEach((link, index) => {
     });
 });
 
+// Show a hairline under the sticky header (or the menu row on phones)
+// once it is pinned to the top of the screen.
+const stickyBars = [document.querySelector(".site-header"), document.querySelector(".site-nav")];
+
+function updateStickyBars() {
+    stickyBars.forEach((bar) => {
+        const pinned = getComputedStyle(bar).position === "sticky" && window.scrollY > 0
+            && bar.getBoundingClientRect().top <= 0;
+        bar.classList.toggle("is-stuck", pinned);
+    });
+}
+
 let navFrame = null;
 window.addEventListener("scroll", () => {
+    updateStickyBars();
     if (clickLockTimer !== null) {
         // Extend the lock while the smooth scroll is still moving.
         clearTimeout(clickLockTimer);
@@ -323,7 +336,11 @@ window.addEventListener("scroll", () => {
         });
     }
 }, { passive: true });
-window.addEventListener("resize", highlightCurrentSection);
+window.addEventListener("resize", () => {
+    updateStickyBars();
+    highlightCurrentSection();
+});
+updateStickyBars();
 highlightCurrentSection();
 
 document.querySelectorAll("[data-copy]").forEach((button) => {

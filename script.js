@@ -43,6 +43,8 @@ const translations = {
         navEducation: "Education",
         navSkills: "Skills",
         navContact: "Contact",
+        copyEmail: "Copy",
+        copiedEmail: "Copied",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -89,6 +91,8 @@ const translations = {
         navEducation: "Білім",
         navSkills: "Дағдылар",
         navContact: "Байланыс",
+        copyEmail: "Көшіру",
+        copiedEmail: "Көшірілді",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -135,6 +139,8 @@ const translations = {
         navEducation: "Образование",
         navSkills: "Навыки",
         navContact: "Контакты",
+        copyEmail: "Копировать",
+        copiedEmail: "Скопировано",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -319,6 +325,25 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 window.addEventListener("resize", highlightCurrentSection);
 highlightCurrentSection();
+
+document.querySelectorAll("[data-copy]").forEach((button) => {
+    let resetTimer = null;
+
+    button.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(button.dataset.copy);
+        } catch (error) {
+            return;
+        }
+        button.dataset.i18n = "copiedEmail";
+        button.textContent = t("copiedEmail");
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+            button.dataset.i18n = "copyEmail";
+            button.textContent = t("copyEmail");
+        }, 2000);
+    });
+});
 
 const themeToggle = document.getElementById("theme-toggle");
 const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");

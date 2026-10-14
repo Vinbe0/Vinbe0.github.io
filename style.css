@@ -467,6 +467,25 @@ main {
     color: var(--muted);
 }
 
+.copy-button {
+    margin-left: 4px;
+    padding: 1px 6px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--subtle);
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    vertical-align: 0.1em;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease;
+}
+
+.copy-button:hover {
+    color: var(--text);
+    border-color: var(--subtle);
+}
+
 /* Entry list: title and meta on one line, description below */
 
 .entry-list li {

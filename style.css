@@ -226,8 +226,15 @@ a:hover {
     text-decoration: none;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a[aria-current] {
     color: var(--text);
+}
+
+.site-nav a[aria-current] {
+    text-decoration: underline;
+    text-decoration-color: var(--link-line);
+    text-underline-offset: 6px;
 }
 
 .header-controls {

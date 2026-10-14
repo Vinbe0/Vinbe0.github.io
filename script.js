@@ -255,6 +255,71 @@ bioButtons.forEach((button) => {
     button.addEventListener("click", () => showBio(button.dataset.bio));
 });
 
+// Highlight the menu link of the section currently being read.
+const navLinks = [...document.querySelectorAll(".site-nav a[href^='#']")];
+const navSections = navLinks.map((link) => document.querySelector(link.hash));
+
+function setCurrentLink(current) {
+    navLinks.forEach((link, index) => {
+        if (index === current) {
+            link.setAttribute("aria-current", "location");
+        } else {
+            link.removeAttribute("aria-current");
+        }
+    });
+}
+
+function highlightCurrentSection() {
+    const marker = window.innerHeight * 0.35;
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    let current = null;
+
+    navSections.forEach((section, index) => {
+        if (section.getBoundingClientRect().top <= marker) {
+            current = index;
+        }
+    });
+    if (atBottom) {
+        current = navSections.length - 1;
+    }
+
+    setCurrentLink(current);
+}
+
+// Sections near the bottom can't scroll all the way up, so after a menu
+// click keep the clicked link highlighted until that scroll finishes.
+let clickLockTimer = null;
+
+navLinks.forEach((link, index) => {
+    link.addEventListener("click", () => {
+        setCurrentLink(index);
+        clearTimeout(clickLockTimer);
+        clickLockTimer = setTimeout(() => {
+            clickLockTimer = null;
+        }, 1000);
+    });
+});
+
+let navFrame = null;
+window.addEventListener("scroll", () => {
+    if (clickLockTimer !== null) {
+        // Extend the lock while the smooth scroll is still moving.
+        clearTimeout(clickLockTimer);
+        clickLockTimer = setTimeout(() => {
+            clickLockTimer = null;
+        }, 150);
+        return;
+    }
+    if (navFrame === null) {
+        navFrame = requestAnimationFrame(() => {
+            navFrame = null;
+            highlightCurrentSection();
+        });
+    }
+}, { passive: true });
+window.addEventListener("resize", highlightCurrentSection);
+highlightCurrentSection();
+
 const themeToggle = document.getElementById("theme-toggle");
 const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 

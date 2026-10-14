@@ -189,6 +189,19 @@ a:hover {
     }
 }
 
+/* Tone the bright illustration down a little on dark backgrounds */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .home-visual img,
+    :root:not([data-theme="light"]) .mobile-visual img {
+        filter: brightness(0.85) saturate(0.95);
+    }
+}
+
+:root[data-theme="dark"] .home-visual img,
+:root[data-theme="dark"] .mobile-visual img {
+    filter: brightness(0.85) saturate(0.95);
+}
+
 /* Header */
 
 .site-header {

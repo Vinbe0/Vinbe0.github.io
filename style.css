@@ -100,6 +100,24 @@ a:hover {
     text-decoration-color: currentColor;
 }
 
+/* Small arrow after links that open another site */
+a[target="_blank"]::after {
+    content: "↗";
+    content: "↗" / "";
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--subtle);
+    font-family: var(--sans);
+    font-size: 0.75em;
+    text-decoration: none;
+    transition: transform 150ms ease, color 150ms ease;
+}
+
+a[target="_blank"]:hover::after {
+    color: currentColor;
+    transform: translate(1px, -1px);
+}
+
 :focus-visible {
     outline: 2px solid var(--text);
     outline-offset: 2px;
@@ -189,6 +207,19 @@ a:hover {
     }
 }
 
+/* Tone the bright illustration down a little on dark backgrounds */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .home-visual img,
+    :root:not([data-theme="light"]) .mobile-visual img {
+        filter: brightness(0.85) saturate(0.95);
+    }
+}
+
+:root[data-theme="dark"] .home-visual img,
+:root[data-theme="dark"] .mobile-visual img {
+    filter: brightness(0.85) saturate(0.95);
+}
+
 /* Header */
 
 .site-header {
@@ -213,8 +244,15 @@ a:hover {
     text-decoration: none;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a[aria-current] {
     color: var(--text);
+}
+
+.site-nav a[aria-current] {
+    text-decoration: underline;
+    text-decoration-color: var(--link-line);
+    text-underline-offset: 6px;
 }
 
 .header-controls {
@@ -429,6 +467,25 @@ main {
     color: var(--muted);
 }
 
+.copy-button {
+    margin-left: 4px;
+    padding: 1px 6px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--subtle);
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    vertical-align: 0.1em;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease;
+}
+
+.copy-button:hover {
+    color: var(--text);
+    border-color: var(--subtle);
+}
+
 /* Entry list: title and meta on one line, description below */
 
 .entry-list li {
@@ -491,6 +548,31 @@ main {
 
 .site-footer a {
     color: var(--muted);
+}
+
+/* Gentle fade-in on load, one block after another */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    main > *,
+    .home-visual {
+        animation: fade-in 600ms ease both;
+    }
+
+    main > :nth-child(2) { animation-delay: 60ms; }
+    main > :nth-child(3) { animation-delay: 120ms; }
+    main > :nth-child(4) { animation-delay: 180ms; }
+    main > :nth-child(5) { animation-delay: 240ms; }
+    main > :nth-child(n + 6) { animation-delay: 300ms; }
+
+    .home-visual {
+        animation-delay: 120ms;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

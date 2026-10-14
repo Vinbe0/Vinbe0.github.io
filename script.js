@@ -43,6 +43,8 @@ const translations = {
         navEducation: "Education",
         navSkills: "Skills",
         navContact: "Contact",
+        copyEmail: "Copy",
+        copiedEmail: "Copied",
         footerText: "Open to collaboration and practical project work."
     },
     Kazakh: {
@@ -89,6 +91,8 @@ const translations = {
         navEducation: "Білім",
         navSkills: "Дағдылар",
         navContact: "Байланыс",
+        copyEmail: "Көшіру",
+        copiedEmail: "Көшірілді",
         footerText: "Ынтымақтастыққа және практикалық жобаларға ашықпын."
     },
     Russian: {
@@ -135,6 +139,8 @@ const translations = {
         navEducation: "Образование",
         navSkills: "Навыки",
         navContact: "Контакты",
+        copyEmail: "Копировать",
+        copiedEmail: "Скопировано",
         footerText: "Открыт к сотрудничеству и практической проектной работе."
     }
 };
@@ -253,6 +259,90 @@ function showBio(length) {
 
 bioButtons.forEach((button) => {
     button.addEventListener("click", () => showBio(button.dataset.bio));
+});
+
+// Highlight the menu link of the section currently being read.
+const navLinks = [...document.querySelectorAll(".site-nav a[href^='#']")];
+const navSections = navLinks.map((link) => document.querySelector(link.hash));
+
+function setCurrentLink(current) {
+    navLinks.forEach((link, index) => {
+        if (index === current) {
+            link.setAttribute("aria-current", "location");
+        } else {
+            link.removeAttribute("aria-current");
+        }
+    });
+}
+
+function highlightCurrentSection() {
+    const marker = window.innerHeight * 0.35;
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    let current = null;
+
+    navSections.forEach((section, index) => {
+        if (section.getBoundingClientRect().top <= marker) {
+            current = index;
+        }
+    });
+    if (atBottom) {
+        current = navSections.length - 1;
+    }
+
+    setCurrentLink(current);
+}
+
+// Sections near the bottom can't scroll all the way up, so after a menu
+// click keep the clicked link highlighted until that scroll finishes.
+let clickLockTimer = null;
+
+navLinks.forEach((link, index) => {
+    link.addEventListener("click", () => {
+        setCurrentLink(index);
+        clearTimeout(clickLockTimer);
+        clickLockTimer = setTimeout(() => {
+            clickLockTimer = null;
+        }, 1000);
+    });
+});
+
+let navFrame = null;
+window.addEventListener("scroll", () => {
+    if (clickLockTimer !== null) {
+        // Extend the lock while the smooth scroll is still moving.
+        clearTimeout(clickLockTimer);
+        clickLockTimer = setTimeout(() => {
+            clickLockTimer = null;
+        }, 150);
+        return;
+    }
+    if (navFrame === null) {
+        navFrame = requestAnimationFrame(() => {
+            navFrame = null;
+            highlightCurrentSection();
+        });
+    }
+}, { passive: true });
+window.addEventListener("resize", highlightCurrentSection);
+highlightCurrentSection();
+
+document.querySelectorAll("[data-copy]").forEach((button) => {
+    let resetTimer = null;
+
+    button.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(button.dataset.copy);
+        } catch (error) {
+            return;
+        }
+        button.dataset.i18n = "copiedEmail";
+        button.textContent = t("copiedEmail");
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+            button.dataset.i18n = "copyEmail";
+            button.textContent = t("copyEmail");
+        }, 2000);
+    });
 });
 
 const themeToggle = document.getElementById("theme-toggle");

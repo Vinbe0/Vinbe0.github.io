@@ -215,6 +215,7 @@ function renderDateRanges() {
         const start = formatDate(`${dateStart}T12:00:00`);
         const end = dateEnd ? formatDate(`${dateEnd}T12:00:00`) : t("present");
         node.textContent = start === end ? start : `${start} – ${end}`;
+        node.classList.toggle("is-current", !dateEnd);
     });
 }
 

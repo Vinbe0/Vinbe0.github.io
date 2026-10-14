@@ -347,6 +347,10 @@ main {
     background: var(--surface);
 }
 
+.phrase {
+    white-space: nowrap;
+}
+
 .prose {
     display: grid;
     gap: 18px;

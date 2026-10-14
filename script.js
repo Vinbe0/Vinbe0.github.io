@@ -148,12 +148,29 @@ function t(key) {
     return dictionary[key] || translations.English[key] || key;
 }
 
+// Split "A · B · C" into phrases that never break internally, so a line
+// only wraps between them and the dot stays at the end of the line.
+function renderPhrases(node, text) {
+    const phrases = text.split(" · ");
+    node.replaceChildren(...phrases.flatMap((phrase, index) => {
+        const span = document.createElement("span");
+        span.className = "phrase";
+        span.textContent = index < phrases.length - 1 ? `${phrase}\u00a0·` : phrase;
+        return index < phrases.length - 1 ? [span, " "] : [span];
+    }));
+}
+
 function updateLanguage(lang) {
     dictionary = translations[lang] || translations.English;
 
     document.querySelectorAll("[data-i18n]").forEach((node) => {
         const key = node.dataset.i18n;
-        if (dictionary[key]) {
+        if (!dictionary[key]) {
+            return;
+        }
+        if (node.hasAttribute("data-i18n-phrases")) {
+            renderPhrases(node, dictionary[key]);
+        } else {
             node.textContent = dictionary[key];
         }
     });

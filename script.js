@@ -141,11 +141,23 @@ const translations = {
 
 const localeCodes = { English: "en", Kazakh: "kk", Russian: "ru" };
 
-const languageSelect = document.getElementById("language");
+const languageButtons = document.querySelectorAll("[data-lang]");
 let dictionary = translations.English;
 
 function t(key) {
     return dictionary[key] || translations.English[key] || key;
+}
+
+// Split "A · B · C" into phrases that never break internally, so a line
+// only wraps between them and the dot stays at the end of the line.
+function renderPhrases(node, text) {
+    const phrases = text.split(" · ");
+    node.replaceChildren(...phrases.flatMap((phrase, index) => {
+        const span = document.createElement("span");
+        span.className = "phrase";
+        span.textContent = index < phrases.length - 1 ? `${phrase}\u00a0·` : phrase;
+        return index < phrases.length - 1 ? [span, " "] : [span];
+    }));
 }
 
 function updateLanguage(lang) {
@@ -153,7 +165,12 @@ function updateLanguage(lang) {
 
     document.querySelectorAll("[data-i18n]").forEach((node) => {
         const key = node.dataset.i18n;
-        if (dictionary[key]) {
+        if (!dictionary[key]) {
+            return;
+        }
+        if (node.hasAttribute("data-i18n-phrases")) {
+            renderPhrases(node, dictionary[key]);
+        } else {
             node.textContent = dictionary[key];
         }
     });
@@ -164,6 +181,10 @@ function updateLanguage(lang) {
 
     document.querySelectorAll("[data-i18n-label]").forEach((node) => {
         node.setAttribute("aria-label", t(node.dataset.i18nLabel));
+    });
+
+    languageButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
     });
 
     document.documentElement.lang = localeCodes[lang] || "en";
@@ -194,6 +215,7 @@ function renderDateRanges() {
         const start = formatDate(`${dateStart}T12:00:00`);
         const end = dateEnd ? formatDate(`${dateEnd}T12:00:00`) : t("present");
         node.textContent = start === end ? start : `${start} – ${end}`;
+        node.classList.toggle("is-current", !dateEnd);
     });
 }
 
@@ -208,11 +230,13 @@ function initialLanguage() {
     return "English";
 }
 
-languageSelect.addEventListener("change", (event) => {
-    updateLanguage(event.target.value);
-    try {
-        localStorage.setItem("language", event.target.value);
-    } catch (error) {}
+languageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        updateLanguage(button.dataset.lang);
+        try {
+            localStorage.setItem("language", button.dataset.lang);
+        } catch (error) {}
+    });
 });
 
 const bioButtons = document.querySelectorAll("[data-bio]");
@@ -258,5 +282,4 @@ syncThemeToggle();
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-languageSelect.value = initialLanguage();
-updateLanguage(languageSelect.value);
+updateLanguage(initialLanguage());

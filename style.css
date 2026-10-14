@@ -100,6 +100,24 @@ a:hover {
     text-decoration-color: currentColor;
 }
 
+/* Small arrow after links that open another site */
+a[target="_blank"]::after {
+    content: "↗";
+    content: "↗" / "";
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--subtle);
+    font-family: var(--sans);
+    font-size: 0.75em;
+    text-decoration: none;
+    transition: transform 150ms ease, color 150ms ease;
+}
+
+a[target="_blank"]:hover::after {
+    color: currentColor;
+    transform: translate(1px, -1px);
+}
+
 :focus-visible {
     outline: 2px solid var(--text);
     outline-offset: 2px;

@@ -141,7 +141,7 @@ const translations = {
 
 const localeCodes = { English: "en", Kazakh: "kk", Russian: "ru" };
 
-const languageSelect = document.getElementById("language");
+const languageButtons = document.querySelectorAll("[data-lang]");
 let dictionary = translations.English;
 
 function t(key) {
@@ -164,6 +164,10 @@ function updateLanguage(lang) {
 
     document.querySelectorAll("[data-i18n-label]").forEach((node) => {
         node.setAttribute("aria-label", t(node.dataset.i18nLabel));
+    });
+
+    languageButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
     });
 
     document.documentElement.lang = localeCodes[lang] || "en";
@@ -208,11 +212,13 @@ function initialLanguage() {
     return "English";
 }
 
-languageSelect.addEventListener("change", (event) => {
-    updateLanguage(event.target.value);
-    try {
-        localStorage.setItem("language", event.target.value);
-    } catch (error) {}
+languageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        updateLanguage(button.dataset.lang);
+        try {
+            localStorage.setItem("language", button.dataset.lang);
+        } catch (error) {}
+    });
 });
 
 const bioButtons = document.querySelectorAll("[data-bio]");
@@ -258,5 +264,4 @@ syncThemeToggle();
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-languageSelect.value = initialLanguage();
-updateLanguage(languageSelect.value);
+updateLanguage(initialLanguage());

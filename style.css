@@ -252,13 +252,29 @@ a:hover {
     display: block;
 }
 
-.language-control select {
-    padding: 2px 4px;
-    border: 1px solid var(--line);
+.language-switch {
+    display: flex;
+    gap: 2px;
+}
+
+.language-switch button {
+    padding: 2px 6px;
+    border: 0;
     border-radius: 6px;
-    color: var(--muted);
+    color: var(--subtle);
     background: transparent;
     font: inherit;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+.language-switch button:hover {
+    color: var(--text);
+}
+
+.language-switch button[aria-pressed="true"] {
+    color: var(--text);
+    background: var(--surface);
 }
 
 /* Content */

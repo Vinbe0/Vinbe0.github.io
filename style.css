@@ -550,6 +550,31 @@ main {
     color: var(--muted);
 }
 
+/* Gentle fade-in on load, one block after another */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    main > *,
+    .home-visual {
+        animation: fade-in 600ms ease both;
+    }
+
+    main > :nth-child(2) { animation-delay: 60ms; }
+    main > :nth-child(3) { animation-delay: 120ms; }
+    main > :nth-child(4) { animation-delay: 180ms; }
+    main > :nth-child(5) { animation-delay: 240ms; }
+    main > :nth-child(n + 6) { animation-delay: 300ms; }
+
+    .home-visual {
+        animation-delay: 120ms;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
